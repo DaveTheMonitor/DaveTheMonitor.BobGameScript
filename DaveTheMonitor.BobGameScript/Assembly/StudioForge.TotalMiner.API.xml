@@ -1,0 +1,2211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StudioForge.TotalMiner.API</name>
+    </assembly>
+    <members>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Position">
+            <summary>
+            The position of the actor in world space. The actors origin is bottom center of the actors feet.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.EyeOffset">
+            <summary>
+            The offset of the actors eyes from origin (bottom center of feet).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.EyePosition">
+            <summary>
+            The position of the actors eyes in world space = Position + EyeOffset
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.FOV">
+            <summary>
+            The field of view
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Velocity">
+            <summary>
+            Current velocity in meters per second.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.MaxVelocity">
+            <summary>
+            The maximum allowed velocity in meters per second.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.ViewDirection">
+            <summary>
+            Normalized view direction.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.ViewMatrix">
+            <summary>
+            View Matrix in world space.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.ViewMatrixLocal">
+            <summary>
+            View Matrix in local space (used for local space rendering).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.ProjectionMatrix">
+            <summary>
+            Projection Matrix
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Frustum">
+            <summary>
+            View frustum in world space.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.HitBoundingBox">
+            <summary>
+            Main hit bounding box in world space. Should contain all other hitbounds. Use in conjunction with CheckHit to test if something should hit an actor.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.CollisionBox">
+            <summary>
+            Collision box in world space.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.SpeedOverride">
+            <summary>
+            Override standard actor speed.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.GravityOverride">
+            <summary>
+            Override standard actor gravity.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.OverrideControlInput">
+            <summary>
+            Override standard actor control input (movement and look around)
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Oxygen">
+            <summary>
+            Current oxygen.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.MaxOxygen">
+            <summary>
+            The maximum oxygen this actor can have.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Stamina">
+            <summary>
+            Current stamina.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.MaxStamina">
+            <summary>
+            The maximum stamina this actor can have.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Health">
+            <summary>
+            Current health.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.MaxHealth">
+            <summary>
+            The maximum health this actor can have.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.FlyMode">
+            <summary>
+             Current Fly mode.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.Reach">
+            <summary>
+            Current reach in blocks (meters).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.IsPlayer">
+            <summary>
+            Flag indicating if this actor is a player (gamer).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.IsOnGround">
+            <summary>
+            True if the actor is currently on a solid block.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.IsCrouching">
+            <summary>
+            True if the actor is crouching (in crouch position).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMActor.IsDeadOrInactiveOrDisabled">
+            <summary>
+            Use this to determine if the player is inactive.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.AddToInventory(StudioForge.TotalMiner.InventoryItem)">
+            <summary>
+            Add an item to the actors inventory.
+            </summary>
+            <returns>The quantity added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.AddToInventory(StudioForge.TotalMiner.InventoryItem,System.Int32@)">
+            <summary>
+            Add an item to the actors inventory, returning the slot id where the item was added.
+            </summary>
+            <returns>The quantity added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.EquipFromInventory(StudioForge.TotalMiner.Item)">
+            <summary>
+            Equip an item from the actors inventory into the items default hand.
+            </summary>
+            <returns>True if the item was successfully equipped.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.EquipFromInventory(StudioForge.TotalMiner.API.ITMHand,StudioForge.TotalMiner.Item)">
+            <summary>
+            Equip an item from the actors inventory into a specified hand.
+            </summary>
+            <param name="hand">The hand to equip the item into. If null, result = EquipFromInventory(Item itemID)</param>
+            <param name="itemID"></param>
+            <returns>True if the item was successfully equipped.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.DropItem(System.Int32)">
+            <summary>
+            Drop an item from the actors hand or inventory to the ground, as a pickup.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.ChangeState(StudioForge.TotalMiner.ActorState)">
+            <summary>
+            Change the actors current state.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TakeDamageAndDisplay(StudioForge.TotalMiner.DamageType,System.Single,Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Cause damage to the actor. Damage particles are spawned. Actor dies if resulting health is less than or equal to 0.
+            </summary>
+            <returns>The actual damage taken.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TakeDamageAndDisplay(StudioForge.TotalMiner.DamageType,System.Single,Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.Item,StudioForge.BlockWorld.SkillType)">
+            <summary>
+            Cause damage to the actor. Damage particles are spawned. Actor dies if resulting health is less than or equal to 0.
+            </summary>
+            <returns>The actual damage taken.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasPermission(StudioForge.TotalMiner.Permissions)">
+            <summary>
+            Returns true if the actor has all of the specified (or'd) permissions.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasPermissionAny(StudioForge.TotalMiner.Permissions)">
+            <summary>
+            Returns true if the actor has at least one of the specified (or'd) permissions.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TogglePermission(StudioForge.TotalMiner.Permissions,System.Boolean)">
+            <summary>
+            Toggle the actors permission.
+            </summary>
+            <param name="permission">The permission to toggle.</param>
+            <param name="enable">True to turn the permission on, false to turn it off.</param>
+            <returns>The state of the permission after the call.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasHistory(System.String)">
+            <summary>
+            Returns true if the actor has a history value != 0 for the specified key.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.LineOfSightTest(Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Casts a ray from EyePosition in a specified direction for a specified distance. Returns true if no solid block is intersected by the ray.
+            </summary>
+            <param name="dir">The ray direction.</param>
+            <param name="distance">The distance to test.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TeleportTo(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Teleport the actor to a world space map position.
+            </summary>
+            <param name="pos"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetSkillLevels(System.Int32[])">
+            <summary>
+            Fills the provided array with all of this actor's skill levels. You can access individual skills by using <see cref="T:StudioForge.BlockWorld.SkillType"/> as an index.
+            </summary>
+            <param name="levels">The array to fill</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetStatBonuses(System.Int32[])">
+            <summary>
+            Fills the provided array with all of this actor's stat bonuses. You can access individual stat bonuses by using <see cref="T:StudioForge.BlockWorld.SkillType"/> as an index.
+            </summary>
+            <param name="bonuses">The array to fill</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetSkillLevel(StudioForge.BlockWorld.SkillType)">
+            <summary>
+            Gets this actor's level of the specified skill without any bonuses.
+            </summary>
+            <param name="skill">The skill to get.</param>
+            <returns>The level of the skill.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetStatBonus(StudioForge.BlockWorld.SkillType)">
+            <summary>
+            Gets this actor's stat bonus for the specified skill as levels. Each 100 points to a stat is equivalent to one level, so if the actor is holding a weapon with an attack bonus of 200, this method will return 2.
+            </summary>
+            <param name="skill">The stat to get.</param>
+            <returns>The bonus for the stat.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.CheckHit(Microsoft.Xna.Framework.Ray,System.Single,System.Single@,System.Single@,System.Boolean@)">
+            <summary>
+            Check if a Ray intersects this actor's hit bounds. The highest multiplier hit bound is used. If a critical bound with the same multiplier is hit, that is used instead.
+            </summary>
+            <param name="ray">The Ray to test.</param>
+            <param name="maxDistance">The maximum distance to test.</param>
+            <param name="distance">The distance between the start of the ray and the bound hit, or -1 if no bound was hit.</param>
+            <param name="damageMultiplier">The multiplier of the bounds hit.</param>
+            <param name="isCritical">True if the bounds is a critical bound, otherwise False.</param>
+            <returns>True if the Ray intersects a hit bound, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.CheckHit(Microsoft.Xna.Framework.BoundingBox,System.Single@,System.Boolean@)">
+            <summary>
+            Check if a BoundingBox intersects this actor's hit bounds. The highest multiplier hit bound is used. If a critical bound with the same multiplier is hit, that is used instead.
+            </summary>
+            <param name="box">The BoundingBox to test.</param>
+            <param name="damageMultiplier">The multiplier of the bounds hit.</param>
+            <param name="isCritical">True if the bounds is a critical bound, otherwise False.</param>
+            <returns>True if the BoundingBox intersects a hit bound, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.CheckHit(Microsoft.Xna.Framework.BoundingSphere,System.Single@,System.Boolean@)">
+            <summary>
+            Check if a BoundingSphere intersects this actor's hit bounds. The highest multiplier hit bound is used. If a critical bound with the same multiplier is hit, that is used instead.
+            </summary>
+            <param name="sphere">The BoundingSphere to test.</param>
+            <param name="damageMultiplier">The multiplier of the bounds hit.</param>
+            <param name="isCritical">True if the bounds is a critical bound, otherwise False.</param>
+            <returns>True if the BoundingSphere intersects a hit bound, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.AddData``1">
+            <summary>
+            Adds a new instance of <typeparamref name="T"/> to this actor with the empty constructor. Returns null if the actor already has data of the type <typeparamref name="T"/>.
+            </summary>
+            <remarks>
+            Consider using the <see cref="T:StudioForge.TotalMiner.API.ModActorDataAttribute"/> to automatically add actor data when possible.
+            </remarks>
+            <typeparam name="T">The type of data to add.</typeparam>
+            <returns>The new data, or null if the actor already has data of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.AddData``1(``0)">
+            <summary>
+            Adds the specified data to this actor unless the actor already has data of the same type.
+            </summary>
+            <remarks>
+            Consider using the <see cref="T:StudioForge.TotalMiner.API.ModActorDataAttribute"/> to automatically add actor data when possible.
+            </remarks>
+            <typeparam name="T">The type of data to add.</typeparam>
+            <param name="data">The data to add.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetData``1">
+            <summary>
+            Gets the data of type <typeparamref name="T"/> on this actor.
+            </summary>
+            <typeparam name="T">The type of data to get.</typeparam>
+            <returns>The data of type <typeparamref name="T"/>, or null if the actor does not have data of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetData(System.Type)">
+            <summary>
+            Gets the data of the specified type on this actor.
+            </summary>
+            <param name="type">The type of data to get.</param>
+            <returns>The data of the specified type, or null if the actor does not have data of the specified type.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.FirstData(System.Func{StudioForge.TotalMiner.API.ModActorData,System.Boolean})">
+            <summary>
+            Gets the first data on this actor that matches <paramref name="predicate"/>, sorted by <see cref="P:StudioForge.TotalMiner.API.ModActorData.Priority"/>.
+            </summary>
+            <param name="predicate">The predicate to test.</param>
+            <returns>The first data on this actor that matches <paramref name="predicate"/>, or null if no data is found.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:StudioForge.TotalMiner.API.ITMActor.GetAllData" -->
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetAllData(System.Func{StudioForge.TotalMiner.API.ModActorData,System.Boolean})">
+            <summary>
+            Gets all mod data on this actor that matches <paramref name="predicate"/>.
+            </summary>
+            <returns>All data on this actor that matches <paramref name="predicate"/>.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetAllData(System.Collections.Generic.List{StudioForge.TotalMiner.API.ModActorData})">
+            <summary>
+            Gets all mod data on this actor and fills <paramref name="result"/> with the result.
+            </summary>
+            <param name="result">The list to fill.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.GetAllData(System.Collections.Generic.List{StudioForge.TotalMiner.API.ModActorData},System.Func{StudioForge.TotalMiner.API.ModActorData,System.Boolean})">
+            <summary>
+            Gets all mod data on this actor that matches <paramref name="predicate"/> and fills <paramref name="result"/> with the result.
+            </summary>
+            <param name="result">The list to fill.</param>
+            <param name="predicate">The predicate to test.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TryGetData``1(``0@)">
+            <summary>
+            Attempts to get the data of type <typeparamref name="T"/> on this actor.
+            </summary>
+            <typeparam name="T">The type of data to get.</typeparam>
+            <param name="data">The data of type <typeparamref name="T"/>, or null if this actor has no data of type <typeparamref name="T"/>.</param>
+            <returns>True if the actor has data of type <typeparamref name="T"/>, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.TryGetData(System.Type,StudioForge.TotalMiner.API.ModActorData@)">
+            <summary>
+            Attempts to get the data of the specified type on this actor.
+            </summary>
+            <param name="type">The type of data to get.</param>
+            <param name="data">The data of the specified type, or null if this actor has no data of the specified type.</param>
+            <returns>True if the actor has data of the specified type, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasData``1">
+            <summary>
+            Returns true if this actor has data of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of data to test for.</typeparam>
+            <returns>True if the actor has data of type <typeparamref name="T"/>, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasData(System.Type)">
+            <summary>
+            Returns true if this actor has data of the specified type.
+            </summary>
+            <param name="type">The type of data to test for.</param>
+            <returns>True if the actor has data of the specified type, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.HasData(System.Func{StudioForge.TotalMiner.API.ModActorData,System.Boolean})">
+            <summary>
+            Returns true if this actor has data that matches <paramref name="predicate"/>.
+            </summary>
+            <param name="predicate">The predicate to test.</param>
+            <returns>True if this actor has data that matches <paramref name="predicate"/>, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMActor.ClearData">
+            <summary>
+            Clears all mod data on this actor.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEntityManager.AddEntity(System.String,System.String,StudioForge.TotalMiner.Entity,System.Boolean)">
+            <summary>
+            Add an Entity to the world.
+            </summary>
+            <param name="comPack">The name of the Component Pack the the entities model component resides in.</param>
+            <param name="comName">The name of the component used as the entities model.</param>
+            <param name="entity">The entity object to add.</param>
+            <param name="isCollidable">Whether or not the entity is collidable with Actors</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEntityManager.RemoveEntity(StudioForge.TotalMiner.Entity)">
+            <summary>
+            Remove an Entity from the world.
+            </summary>
+            <param name="entity">The entity to remove.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.AddFog(StudioForge.BlockWorld.GlobalPoint3D,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Color,System.Int32,System.Boolean)">
+            <summary>
+            Add a Fog section.
+            </summary>
+            <param name="center">The center of the section.</param>
+            <param name="radius">The radius of the section.</param>
+            <param name="duration">The duration of the section in seconds.</param>
+            <param name="transitDuration">The on/off transition duration time in seconds.</param>
+            <param name="intensity">The intensity of the fog. Normalized. 0 = Weak. 1 = Opaque.</param>
+            <param name="color">The color of the fog.</param>
+            <param name="visibility">The view distance in blocks through the fog.</param>
+            <param name="transmit">Transmit the section addition to remote gamers.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.RemoveFog(StudioForge.BlockWorld.GlobalPoint3D,System.Boolean)">
+            <summary>
+            Remove a Fog section.
+            </summary>
+            <param name="center">The center of the section to remove.</param>
+            <param name="transmit">Transmit the section removal to remote gamers.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.AddHail(StudioForge.BlockWorld.GlobalPoint3D,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Color,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Add a Hail section.
+            </summary>
+            <param name="center">The center of the section.</param>
+            <param name="radius">The radius of the section.</param>
+            <param name="duration">The duration of the section in seconds.</param>
+            <param name="transitDuration">The on/off transition duration time in seconds.</param>
+            <param name="intensity">The intensity of the hail. Normalized. 0 = Weak. 1 = Intense.</param>
+            <param name="color">The color of the hail.</param>
+            <param name="minSize">The minimum size of a hail stone in meters. e.g. 0.01 = 1 cm.</param>
+            <param name="maxSize">The maximum size of a hail stone in meters. e.g. 0.01 = 1 cm.</param>
+            <param name="transmit">Transmit the section addition to remote gamers.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.RemoveHail(StudioForge.BlockWorld.GlobalPoint3D,System.Boolean)">
+            <summary>
+            Remove a Hail section.
+            </summary>
+            <param name="center">The center of the section to remove.</param>
+            <param name="transmit">Transmit the section removal to remote gamers.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.AddRain(StudioForge.BlockWorld.GlobalPoint3D,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Color,System.Boolean)">
+            <summary>
+            Add a Rain section.
+            </summary>
+            <param name="center">The center of the section.</param>
+            <param name="radius">The radius of the section.</param>
+            <param name="duration">The duration of the section in seconds.</param>
+            <param name="transitDuration">The on/off transition duration time in seconds.</param>
+            <param name="intensity">The intensity of the rain. Normalized. 0 = Weak. 1 = Strong.</param>
+            <param name="color">The color of the rain.</param>
+            <param name="transmit">Transmit the section addition to remote gamers.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMEnvManager.RemoveRain(StudioForge.BlockWorld.GlobalPoint3D,System.Boolean)">
+            <summary>
+            Remove a Rain section.
+            </summary>
+            <param name="center">The center of the section to remove.</param>
+            <param name="transmit">Transmit the section removal to remote gamers.</param>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.World">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.Random">
+            <summary>
+            A general random number generator that can be used anywhere.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.GraphicsDevice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.WindowManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.TexturePack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.SpriteBatch">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.IsHost">
+            <summary>
+            True if the local player is the host of the session or the game is singleplayer, otherwise false.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.IsMultiplayer">
+            <summary>
+            True if the game is multiplayer, otherwise false.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMGame.IsMultiplayerWithRemotes">
+            <summary>
+            True if the game is multiplayer and at least one other remote client is in the game, otherwise false.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.GetPlayer(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="gamerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.GetLocalPlayer(Microsoft.Xna.Framework.PlayerIndex)">
+            <summary>
+            
+            </summary>
+            <param name="playerIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.GetAllPlayers(System.Collections.Generic.List{StudioForge.TotalMiner.API.ITMPlayer})">
+            <summary>
+            
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.GetMod(System.String)">
+            <summary>
+            Returns the active mod with the specified ID.
+            </summary>
+            <param name="id">The ID of the mod to get.</param>
+            <returns>An active mod, or null if no mod with the specified ID is active.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.GetActiveMods">
+            <summary>
+            Returns a list of all active mods. Modifying this list will not change the active mods.
+            </summary>
+            <returns>A list of all active mods.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.IsModActive(System.String)">
+            <summary>
+            Returns true if a mod with the specified ID is active.
+            </summary>
+            <param name="id">The ID of the mod to check for.</param>
+            <returns>True if a mod with the specified ID is active.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddNotification(System.String)">
+            <summary>
+            Adds a new 'pink' notification to the top left of the screen.
+            </summary>
+            <param name="message">The local notification message text.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddNotification(System.String,StudioForge.TotalMiner.NotifyRecipient)">
+            <summary>
+            Adds a new 'pink' notification to the top left of the screen.
+            </summary>
+            <param name="message">The notification message text.</param>
+            <param name="recType">Who receives the notification.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddNotification(System.String,Microsoft.Xna.Framework.Color,StudioForge.TotalMiner.NotifyRecipient)">
+            <summary>
+            Adds a new notification with the specified color to the top left of the screen.
+            </summary>
+            <param name="message">The notification message text.</param>
+            <param name="color">The notification background color.</param>
+            <param name="recType">Who receives the notification.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddEventBlockMined(StudioForge.TotalMiner.Block,System.Action{StudioForge.TotalMiner.Block,System.UInt16,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Adds an Action method that will be executed when a block is mined.
+            </summary>
+            <param name="blockID">The block that was mined or Block.None for all blocks.</param>
+            <param name="action">The method to execute. Block=The block that was mined. Byte=Aux data of the block before it was mined. GlobalPoint3D=Block position. ITMHand=The hand that mined the block. From the hand you can get the owner/player.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddEventBlockPlaced(StudioForge.TotalMiner.Block,System.Action{StudioForge.TotalMiner.Block,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Adds an Action method that will be executed when the block is placed.
+            </summary>
+            <param name="blockID">The block that was placed or Block.None for all blocks.</param>
+            <param name="action">The method to execute. Block=The block that was placed. GlobalPoint3D=Block position. ITMHand=The hand that placed the block. From the hand you can get the owner/player.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddEventItemSwing(StudioForge.TotalMiner.Item,System.Action{StudioForge.TotalMiner.Item,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Adds an Action method that will be executed when the item is swung and the swing has reached it's extended position.
+            </summary>
+            <param name="itemID">The item being swung or Item.None for all items.</param>
+            <param name="action">The method to execute. Item=The item swung. ITMHand=The hand that swung the item.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddConsoleCommand(System.Action{System.String,StudioForge.TotalMiner.API.ITMGame,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.Engine.Integration.IOutputLog},System.String,System.String,System.String)">
+            <summary>
+            Add a command to the game console window.
+            </summary>
+            <param name="action">The method to execute the command.</param>
+            <param name="cmd">The command (text).</param>
+            <param name="briefHelp">Brief help message, usually one line long, listing any parameters. Displayed by the 'help' command.</param>
+            <param name="fullHelp">A full help message, describing the command and each parameter on a separate line. Displayed by the 'help [command]' command.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RunConsoleCommand(System.String,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.Engine.Integration.IOutputLog)">
+            <summary>
+            Run a raw unparsed console command.
+            </summary>
+            <param name="command">Raw unparsed command text.</param>
+            <param name="caller">The player who executed the command.</param>
+            <param name="player">Target player.</param>
+            <param name="log">Output log.</param>
+            <returns>True if the command was executed.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RunScript(System.String,StudioForge.TotalMiner.API.ITMActor)">
+            <summary>
+            Run an existing script.
+            </summary>
+            <param name="script">Name of script, including full path.</param>
+            <param name="actor">Actor the script is executed for.</param>
+            <returns>True if the script was found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RunSingleScriptCommand(System.String,StudioForge.TotalMiner.API.ITMActor)">
+            <summary>
+            Run a single script command.
+            </summary>
+            <param name="command">Full script command text, unparsed.</param>
+            <param name="actor">Actor the script command is executed for.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.SendTextMessage(System.String,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.TotalMiner.API.ITMPlayer,System.Boolean,System.Boolean)">
+            <summary>
+            Send a text message.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="sender">The player who sent the message.</param>
+            <param name="recipient">The recipient. Pass null to send to all players.</param>
+            <param name="clan">True if the message is to be sent to all members of recipients clan.</param>
+            <param name="admins">True if the message is to be sent to all admins (recipient and clan are ignored).</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.ReceiveTextMessage(System.String,StudioForge.Engine.Net.NetworkGamer,StudioForge.TotalMiner.TextMsgTarget)">
+            <summary>
+            Called by the game when a text message is received from a remote gamer.
+            </summary>
+            <param name="message">The message text.</param>
+            <param name="sender">The sender.</param>
+            <param name="target">Recipient target(s).</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RemoveEventBlockMined(StudioForge.TotalMiner.Block,System.Action{StudioForge.TotalMiner.Block,System.UInt16,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Removes an block mined event that was previously added with AddEventBlockMined(..).
+            </summary>
+            <param name="blockID">The block that was mined.</param>
+            <param name="action">The method to execute.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RemoveEventBlockPlaced(StudioForge.TotalMiner.Block,System.Action{StudioForge.TotalMiner.Block,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Removes an block placed event that was previously added with AddEventBlockPlaced(..).
+            </summary>
+            <param name="blockID">The block that was placed.</param>
+            <param name="action">The method to execute.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.RemoveEventItemSwing(StudioForge.TotalMiner.Item,System.Action{StudioForge.TotalMiner.Item,StudioForge.TotalMiner.API.ITMHand})">
+            <summary>
+            Removes an item swing event that was previously added with AddEventItemSwing(..).
+            </summary>
+            <param name="itemID">The item being swung.</param>
+            <param name="action">The method to execute.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.OpenPauseMenu(StudioForge.TotalMiner.API.ITMPlayer,StudioForge.TotalMiner.API.NewGuiMenu[],System.Boolean)">
+            <summary>
+            Opens the Pause menu with your custom menu pre-selected
+            </summary>
+            <param name="player">The player who opened the screen</param>
+            <param name="menus">Menu Tabs to include on the screen</param>
+            <param name="mainTabs">Flag</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.AddScreen(StudioForge.Engine.Integration.IGameScreen,StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            Add a Screen to the Screen Manager
+            </summary>
+            <param name="screen"></param>
+            <param name="player"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.CreateInventory(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new inventory with the specified size.
+            </summary>
+            <param name="packSize">The pack size of the inventory. This is the main inventory.</param>
+            <param name="equipSize">The equipment size of the inventory. This is used for armor.</param>
+            <param name="tempSize">The temp size of the inventory. This is used for items that won't stay in the inventory, such as for crafting.</param>
+            <returns>The new inventory.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMGame.CreatePacket(StudioForge.TotalMiner.API.ITMMod)">
+            <summary>
+            Creates a new packet to send data in multiplayer. Once you have written your data, call <see cref="M:StudioForge.TotalMiner.ModPacket.Send(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketSendType)"/> to send the packet to remotes.
+            </summary>
+            <param name="mod">The mod that the packet will be sent to.</param>
+            <returns>A new packet.</returns>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.Owner">
+            <summary>
+            The entity which the hand belongs to. Maybe a Player or NPC.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.Player">
+            <summary>
+            The player the hand belongs too. If the hand belongs to an NPC, this propery will be null. It is always necessary to check if this property is null before using it as a reference.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.ItemID">
+            <summary>
+            The item currently equiped in the hand.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.HandIndex">
+            <summary>
+            The inventory slot ID of the item currently equipped by the hand.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.HandType">
+            <summary>
+            The hand type.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMHand.IsSwinging">
+            <summary>
+            True if the hand is currently swinging.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMHand.SetItem(StudioForge.TotalMiner.Item)">
+            <summary>
+            Directly set the item equipped by the hand.
+            </summary>
+            <param name="itemID"></param>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.PackSize">
+            <summary>
+            The number of slots in the pack inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.EquipSize">
+            <summary>
+            The number of slots in the equip (body) inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.TempSize">
+            <summary>
+            The number of slots in the temp (crafting) inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.TotalSize">
+            <summary>
+            The total number of inventory slots (pack + equip + temp).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.EquipIndexStart">
+            <summary>
+            The start slot ID for equip inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.EquipIndexEnd">
+            <summary>
+            The end slot ID for equip inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.TempIndexStart">
+            <summary>
+            The start slot ID for temp inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.TempIndexEnd">
+            <summary>
+            The end slot ID for temp inventory.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.Items">
+            <summary>
+            The raw list of inventory items. Includes all pack, equip and temp items. It is best not to modify the contents of this list directly. This size of this list may not match the inventory size.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMInventory.Item(System.Int32)">
+            <summary>
+            Indexer to get and set the contents of the inventory. Automatically changes the item in the player's hand, hotbar etc.
+            </summary>
+            <param name="slotID">The slot ID to access.</param>
+            <returns>The item in the specified slot.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.ItemCount(StudioForge.TotalMiner.Item)">
+            <summary>
+            Query how many of a certain item are in (pack) inventory.
+            </summary>
+            <param name="itemID">The item to count</param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.Clear">
+            <summary>
+            Clear all items from inventory.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.AddToInventory(StudioForge.TotalMiner.Item)">
+            <summary>
+            Add an item to inventory pack.
+            </summary>
+            <param name="itemID">The item to add.</param>
+            <returns>The quantity added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.AddToInventory(StudioForge.TotalMiner.Item,System.Int32)">
+            <summary>
+            Add an item to inventory pack.
+            </summary>
+            <param name="itemID">The item to add.</param>
+            <param name="count">The quantity to add.</param>
+            <returns>The quantity added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.AddToInventory(StudioForge.TotalMiner.InventoryItem)">
+            <summary>
+            Add an item to inventory pack.
+            </summary>
+            <param name="item">The item to add.</param>
+            <returns>The quantity added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.ChangeItemDurability(System.Int32,System.Int32)">
+            <summary>
+            Change the durability of the item in the specified slot of the inventory. If the item durability reaches zero, it is also correctly removed from the player's hand, hotbar etc. Will not allow the item's durability to exceed its maximum.
+            </summary>
+            <param name="slotID">Slot ID to start search.</param>
+            <param name="amount">The amount of durability to add or remove.</param>
+            <returns>The durability after the change.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.DecrementItem(StudioForge.TotalMiner.Item,System.Int32)">
+            <summary>
+            Decrement an items count. If the item count reaches zero, it is also correctly removed from the player's hand, hotbar etc.
+            </summary>
+            <param name="itemID">The item to decrement.</param>
+            <param name="qty">The quantity to decrement.</param>
+            <returns>The quantity remaining, i.e. qty - actual.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(StudioForge.TotalMiner.Item)">
+            <summary>
+            Find an item in pack inventory.
+            </summary>
+            <param name="itemID">The item to find.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(StudioForge.TotalMiner.Item,System.Boolean)">
+            <summary>
+            Find an item in pack inventory.
+            </summary>
+            <param name="itemID">The item to find.</param>
+            <param name="mustBeUnequipped">True if the item must be equipped.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(System.Int32,System.Int32,StudioForge.TotalMiner.Item,System.Boolean)">
+            <summary>
+            Find an item in a region of inventory.
+            </summary>
+            <param name="fromSlotID">Slot ID to start search.</param>
+            <param name="toSlotID">Slot ID to end search.</param>
+            <param name="itemID">The item to Find.</param>
+            <param name="mustBeUnequipped">True if the item must be equipped.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(StudioForge.TotalMiner.Item,System.Int32,System.UInt16)">
+            <summary>
+            Find an item in pack inventory.
+            </summary>
+            <param name="itemID">The item to find.</param>
+            <param name="count">The count the inventory item must have exactly.</param>
+            <param name="durability">The durability the inventory item must have exactly.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(StudioForge.TotalMiner.ItemType)">
+            <summary>
+            Find an item of a specific type in pack inventory.
+            </summary>
+            <param name="itemType">The type of item to find.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItem(StudioForge.TotalMiner.ItemSubType)">
+            <summary>
+            Find an item of a specific subtype in pack inventory.
+            </summary>
+            <param name="itemSubType">The subtype of item to find.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItemHighestValue(StudioForge.TotalMiner.ItemType)">
+            <summary>
+            Find the highest valued item of a specific type in pack inventory. 
+            </summary>
+            <param name="itemType">The type of item to find.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.FindItemHighestValue(StudioForge.TotalMiner.ItemSubType)">
+            <summary>
+            Find the highest value item of a specific subtype in pack inventory.
+            </summary>
+            <param name="itemSubType">The subtype of item to find.</param>
+            <returns>The slot ID of the item or -1 if not found.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.ReadState(System.IO.BinaryReader,System.Int32)">
+            <summary>
+            Deserialize the Inventory object from a binary stream.
+            </summary>
+            <param name="reader">BinaryReader.</param>
+            <param name="version">The version number of the serialized data.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMInventory.WriteState(System.IO.BinaryWriter)">
+            <summary>
+            Serialize the Inventory object to a binary stream.
+            </summary>
+            <param name="writer">BinaryWriter.</param>
+        </member>
+        <member name="T:StudioForge.TotalMiner.API.ITMMap">
+            <summary>
+            Total Miner maps are made up of regions. Each region is made up of chunks.
+            Typically you don't have to deal directly with regions or chunks.
+            Chunks are compressed in RAM using Run Length Encoded compression to minimize the games RAM footprint.
+            If the data in a chunk is being edited (block id, light data, aux data), the chunk is first uncompressed into a plain x,y,z array.
+            The array of chunk data is cached so multiple edits do not require subsequent uncompressions. The game releases the cache after some time of no edits.
+            The game automatically handles the compression/uncompression/caching of chunk data.
+            Typical Get methods such as GetBlockID, GetLight, GetAux will first check if an uncompressed cache of the chunk data exists, and if not, will uncompress the data and cache it, before returning the data you request.
+            For the first uncompress this obviously has both time and RAM penalties. Subsequent calls will be fast, until the game releases the cache.
+            For this reason it is not a good idea to access (uncompress) too many chunks at one time. RAM usage will sky rocket, potentially causing out of memory errors.
+            For this reason there are Get...NoCache alternative methods for the Get methods. These NoCache methods will not uncompress/cache the chunk data while performing the query.
+            If the chunk data is already uncompressed it will read from that, otherwise it will read directly from the RLE stream. Depending on the complexity of the stream, reads can be
+            slower than reading from an uncompressed cache, but the RAM savings usually make up for that.
+            Rule of thumb, if you are just doing the occasional queries for a few blocks, or you are querying blocks dispersed all over the map then then use the NoCache methods.
+            If you are querying many blocks within a close proximity, use the Get methods.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMap.TileSize">
+            <summary>
+            The size of a map tile (in meters).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMap.MapSize">
+            <summary>
+            The size of a map.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockData(StudioForge.TotalMiner.Block)">
+            <summary>
+            Get Property Data for a Block
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.Commit">
+            <summary>
+            Force mesh rebuilds after map block changes.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.IsValidPoint(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Check if a voxel location is within the loaded bounds of a map.
+            </summary>
+            <param name="p">Voxel location</param>
+            <returns>True if the location is within the map bounds, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetPoint(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Get an integral voxel location from a map position vector.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetPosition(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get a map position vector from an integral voxel location.
+            </summary>
+            <returns> The top north west corner of the voxel location.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockCenter(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get a map position vector from an integral voxel location.
+            </summary>
+            <returns> The center of the voxel location.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockID(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Get the Block ID at a map position.
+            If there is no uncompressed cache for the chunk that contains the block, the chunk is uncompressed and cached before the Block ID is read.
+            This will be a slow operation if the chunk is not already uncompressed and will consume 32 x 32 x 32 bytes of RAM, but subsequent calls will be faster, until the cache is discarded by the game.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockID(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID at an integral voxel location. 
+            If there is no uncompressed cache for the chunk that contains the block, the chunk is uncompressed and cached before the Block ID is read.
+            This will be a slow operation if the chunk is not already uncompressed and will consume 32 x 32 x 32 bytes of RAM, but subsequent calls will be faster, until the cache is discarded by the game.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockIDNoCache(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID at an integral voxel location.
+            If there is no uncompressed cache for the chunk that contains the block, Block ID is read from the compressed stream. 
+            This call will not consume RAM to store a cache, and will not cause a chunk uncompression, so there is no first up penalty if the chunk not uncompressed. But generally, reading Block ID's from an uncompressed stream is slower than reading Block ID's from a compressed cache. It depends how complex the chunk is. If you plan to only make a few reads from the chunk, this method should be fine. If you plan to make hundreds or thousands of reads, it might be better to use the method that uncompresses and caches the chunk.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockData(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID, Light and Aux data at an integral voxel location. 
+            If there is no uncompressed cache for the chunk that contains the block, the chunk is uncompressed and cached before the Block data is read.
+            This will be a slow operation if the chunk is not already uncompressed and will consume 32 x 32 x 32 x 3 bytes of RAM, but subsequent calls will be faster, until the cache is discarded by the game.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockIDAndAux(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID and Aux data at an integral voxel location. 
+            This method is slightly faster than calling GetBlockID and GetAuxData separately, and is faster than calling GetBlockData.
+            If there is no uncompressed cache for the chunk that contains the block, the chunk is uncompressed and cached before the Block data is read.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockIDAndAuxNoCache(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID and Aux data at an integral voxel location. 
+            This method is slightly faster than calling GetBlockIDNoCache and GetAuxDataNoCache separately.
+            If there is no uncompressed cache for the chunk that contains the block, Block ID and Aux is read from the compressed streams. 
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockAndLight(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the Block ID and Light data at an integral voxel location. 
+            This method is slightly faster than calling GetBlockID and GetBlockLight separately, and is faster than calling GetBlockData.
+            If there is no uncompressed cache for the chunk that contains the block, the chunk is uncompressed and cached before the Block data is read.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.IsBlockDataEqual(Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.Block,System.Byte)">
+            <summary>
+            Compares if the block data at a map position matches inputs.
+            </summary>
+            <param name="pos">The map position of the block to compare.</param>
+            <param name="blockID">The Block ID to compare.</param>
+            <param name="aux">The Aux data to compare.</param>
+            <returns>True of the Block ID and Aux data at the map position matches the blockID and aux parameters above.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.HasChanged(System.UInt16)">
+            <summary>
+            Tests if the auxData indicates the source block has been edited.
+            </summary>
+            <param name="auxData">Source block auxData.</param>
+            <returns>Returns true of the auxData indicates the source block has been edited, i.e. the block is not the originally generated block.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.HasChanged(StudioForge.BlockWorld.MapBlock)">
+            <summary>
+            Tests if the blockData.AuxData indicates the source block has been edited.
+            </summary>
+            <param name="blockData">Source block data.</param>
+            <returns>Returns true of the data indicates the source block has been edited, i.e. the block is not the originally generated block.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.HasChanged(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Tests if the block at the voxel location has been edited.
+            </summary>
+            <param name="p">Voxel location.</param>
+            <returns>Returns true of the block at the voxel location has been edited, i.e. the block is not the originally generated block.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetSunLight(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the amount of sunlight at a voxel location. Sunlight can have a value from 0 to 15.
+            This value of sun light is affected by the current time of day.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockLight(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the amount of blocklight at a voxel location. Blocklight can have a value from 0 to 15.
+            Block light is light emitted from light emitting blocks, such as torches, sun blocks, etc.
+            Block light is not affected by the current time of day.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetMaxNeighbourLight(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the highest light data from a voxels adjacent locations. Excludes p and diagonally adjacent voxels.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetMaxNeighbourLight(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the highest light data from a voxels adjacent locations. Excludes p, op and diagonally adjacent voxels.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetMaxNeighbourSunLight(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the highest sunlight value from a voxels adjacent locations. Excludes p, op and diagonally adjacent voxels.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetMaxNeighbourBlockLight(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the highest block light value from a voxels adjacent locations. Excludes p, op and diagonally adjacent voxels.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.CanBlockSeeTheSky(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Return true of the voxel location is either ground level or above.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetLightNormalized(System.Byte)">
+            <summary>
+            Get the normalized value of a raw light value.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetLightNormalized(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the normalized value of light at a voxel location.
+            The value returned could be either sunlight or block light, whichever is higher.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetLightNormalized(StudioForge.BlockWorld.MapBlock)">
+            <summary>
+            Get the normalized value of light from block data.
+            The value returned could be either sunlight or block light, whichever is higher.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetLightNormalized(StudioForge.BlockWorld.MapLight)">
+            <summary>
+            Get the normalized value of light from light data.
+            The value returned could be either sun light or block light, whichever is higher.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetSunLightNormalized(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the normalized value of sunlight from a voxel location.
+            This value of sunlight is affected by the current time of day.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockLightNormalized(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the normalized value of block light from a voxel location.
+            Block light is light emitted from light emitting blocks, such as torches, sun blocks, etc.
+            Block light is not affected by the current time of day.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetSunAndBlockLightNormalized(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the normalized values of both block light and sun light from a voxel location.
+            </summary>
+            <returns>X = normalized sunlight, Y = normalized block light.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetBlockInventory(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.Engine.GamerServices.GamerID,System.Boolean)">
+            <summary>
+            Get a blocks ITMInventory object. Certain types of blocks in the game have inventory, such as chests, safes, etc.
+            </summary>
+            <param name="p">Voxel location</param>
+            <param name="gamerID">ID of gamer who owns the block inventory. Only valid for locked chests. If the block at the location is not a locked chest, pass in GamerID.Sys1</param>
+            <param name="createIfNotExist">By default, if the blocks inventory is empty, this method will return null. If you require the inventory object even if it is empty, pass TRUE, otherwise pass FALSE.</param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMMap.GetOrAddDataBlock(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Get the data block associated with a block id at a voxel location.
+            If the data block doesn't exist, create it.
+            Some blocks require extra data, such as chests for inventory.
+            Data blocks are used to store this extra data.
+            </summary>
+            <param name="p">Voxel location.</param>
+            <returns></returns>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.Version">
+            <summary>
+            The version of this mod.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.ID">
+            <summary>
+            The ID that represents this mod.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.Name">
+            <summary>
+            The display name for this mod. This should not be used to identify the mod, use <see cref="P:StudioForge.TotalMiner.API.ITMMod.ID"/> instead for that.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.Author">
+            <summary>
+            The name of the author that created this mod.
+            </summary>
+            <remarks>This can be null.</remarks>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.Desc">
+            <summary>
+            The description of this mod, specified by the author.
+            </summary>
+            <remarks>This can be null.</remarks>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.FullPath">
+            <summary>
+            The full file path of this mod. This is not relative to the game's save folder. Use this path if you require to read/write files from your Mod's folder.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMMod.Plugin">
+            <summary>
+            This mod's plugin, if it has one.
+            </summary>
+            <remarks>This can be null.</remarks>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMNetworkManager.Session">
+            <summary>
+            Returns the current Network Session or null if no session connected.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNetworkManager.FindSessions(StudioForge.TotalMiner.SessionMatching)">
+            <summary>
+            Retrieves a list of network sessions available to join.
+            </summary>
+            <param name="match">Matchmaking properties.</param>
+            <returns>List of network sessions available to join.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNetworkManager.JoinSession(StudioForge.Engine.Net.IAvailableNetworkSession,StudioForge.Engine.GamerServices.Gamer)">
+            <summary>
+            Called by a client to join an existing network session.
+            </summary>
+            <param name="session">The available session to join.</param>
+            <param name="joiner">The gamer joining the session.</param>
+            <returns>A connected network session or null if coould not join.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNetworkManager.CreateSession(StudioForge.Engine.Net.NetworkSessionType,StudioForge.Engine.GamerServices.Gamer,StudioForge.TotalMiner.SessionProperties)">
+            <summary>
+            Called by the Host Gamer to create a new network session for others to join.
+            </summary>
+            <param name="type">Type of network session.</param>
+            <param name="host">The gamer who is the host of the session (session creator).</param>
+            <param name="properties">Properties describing the session.</param>
+            <returns>A connected session or null if it could not be created.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNetworkManager.EndSession">
+            <summary>
+            Called if the Host ends the current network session or the session is disconnected.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMNpcManager.NpcList">
+            <summary>
+            A readonly list of all NPCs. Do not alter the contents of the list. This list is not thread safe.
+            Test npc.IsDeadOrInactiveOrDisabled before use if you are only interested in active/alive NPCs.
+            </summary>     
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMNpcManager.HasFreeNpcSlots">
+            <summary>
+            Returns False if no more NPCs can be spawned (all slots are allocated).
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNpcManager.GetNpcs(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.ActorType,System.Collections.Generic.List{StudioForge.TotalMiner.API.ITMActor})">
+            <summary>
+            Fills a provided list with all NPCs inside a specified region.
+            If you are calling this method often, then cache the list to avoid garbage issues.
+            </summary>
+            <param name="min">The min bound of the region.</param>
+            <param name="max">The max bound of the region.</param>
+            <param name="actorType">The type of NPC. Pass ActorType.None to test all NPCs.</param>
+            <param name="result">A valid list you must provide to the method. This list will be filled with NPCs that match the type and are found inside the region.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNpcManager.SpawnNpc(StudioForge.TotalMiner.ActorType,Microsoft.Xna.Framework.Vector3,System.Single,System.String,StudioForge.TotalMiner.DayOrNight,System.String,StudioForge.TotalMiner.LootTable,System.Nullable{StudioForge.TotalMiner.CombatStats})">
+            <summary>
+            Spawn an NPC.
+            </summary>
+            <param name="actorType">The type of NPC.</param>
+            <param name="pos">The absolute position of the NPC (center, feet).</param>
+            <param name="spawnAngle">The angle the NPC will face when spawned. Specified as degrees (0-360).</param>
+            <param name="ai">The name of the behaviour tree for the NPC behaviour. null = use default.</param>
+            <param name="dayOrNight"></param>
+            <param name="killScript">The name of the script to be executed if the NPC is killed. null = no script.</param>
+            <param name="lootTable">A custom loot table for the NPC. null = use default.</param>
+            <param name="combatStats">Custom combat stats for the NPC. null = use default.</param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMNpcManager.DeactivateNpc(StudioForge.TotalMiner.API.ITMActor)">
+            <summary>
+            Deactivate an NPC.
+            </summary>
+            <param name="npc">The NPC to deactivate.</param>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.Tag">
+            <summary>
+            Custom data for the player.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.PlayerIndex">
+            <summary>
+            Controller player index.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.VirtualPlayer">
+            <summary>
+            Spectate or CCTV virtualization.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.ShowHealthOverride">
+            <summary>
+            Overrides the default health bar visibility. If true, the health bar will always be visible, if false it will never be visible, if null the default condition is used.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.ShowStaminaOverride">
+            <summary>
+            Overrides the default stamina bar visibility. If true, the stamina bar will always be visible, if false it will never be visible, if null the default condition is used.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.ShowOxygenOverride">
+            <summary>
+            Overrides the default oxygen bar visibility. If true, the oxygen bar will always be visible, if false it will never be visible, if null the default condition is used.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.SwingFacePos">
+            <summary>
+            The quarter position of the reticle on the block face.
+            A block face is divided into 4 quarters and a center quarter.
+            Values 0 - 3 represent the 4 corner quarters.
+            If Value is > 3 then the recticle is also in the center quarter. In this case, AND the value with 0x03 to extract the corner quarter.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.SwingFace">
+            <summary>
+            The block face the reticle is currently intersecting at SwingTarget.
+            Value = ProxyDefault if reticle is currently not intersecting a block.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.SwingTarget">
+            <summary>
+            The voxel location where the reticle intersects a block.
+            First check if SwingFace != ProxyDefault to determine if the reticle is actually intersecting a block.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.SwingTargetDistance">
+            <summary>
+            The distance in meters between the actors EyePosition and the reticles intersection of a block.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.PlaceTarget">
+            <summary>
+            The voxel location where a block would be placed if the player was to place a block.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMPlayer.History">
+            <summary>
+            Player History.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlayer.GetAction(StudioForge.TotalMiner.Item,StudioForge.TotalMiner.ItemAction)">
+            <summary>
+            Gets the number of the player's actions for an item.
+            </summary>
+            <param name="item">The item to get the actions for.</param>
+            <param name="action">The type of action to get.</param>
+            <returns>The number of the specified action for the player.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlayer.HasAction(StudioForge.TotalMiner.Item,StudioForge.TotalMiner.ItemAction)">
+            <summary>
+            Returns true if the player has the specified action for an item.
+            </summary>
+            <param name="item">The item to test the action for.</param>
+            <param name="action">The type of action to test.</param>
+            <returns>True if the player has the specified action, otherwise False.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.Initialize(StudioForge.TotalMiner.API.ITMPluginManager,StudioForge.TotalMiner.API.ITMMod)">
+            <summary>
+            Initialize the Mod. This method is called by the game immediately when a world with the mod is loaded, before any game initialization.
+            </summary>
+            <param name="mgr">ITMPluginManager object.</param>
+            <param name="mod">This mod instance.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.InitializeGame(StudioForge.TotalMiner.API.ITMGame)">
+            <summary>
+            This method is called by the game when the player has loaded a world.
+            </summary>
+            <param name="game">ITMGame object.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.UnloadMod">
+            <summary>
+            Called if the mod is unloaded.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.HandleInput(StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            This method is called by the game once every frame for every local player. Use this method to process user input.
+            </summary>
+            <param name="player"></param>
+            <returns>True if an input was processed.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.Update">
+            <summary>
+            This method is called by the game once every frame. Use this method to add frame based logic that is not dependant on a particular player.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.Update(StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            This method is called by the game once every frame for every local and remote player in the game. Use this method to add player dependant frame based logic.
+            Usually you would only implement logic for local players. But we give you the option to also update remote players.
+            In general you should not update remote players unless you understand what that means.
+            </summary>
+            <param name="player"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.Draw(StudioForge.TotalMiner.API.ITMPlayer,StudioForge.TotalMiner.API.ITMPlayer,Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            This method is called by the game once every frame, after all the main rendering has been done. Use this method to add your own rendering.
+            </summary>
+            <param name="player"></param>
+            <param name="virtualPlayer"></param>
+            <param name="vp"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.WorldSaved(System.Int32)">
+            <summary>
+            This method is called by the game after the world has been saved to disk.
+            </summary>
+            <param name="version">The version number of the save file.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.PlayerJoined(StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            This method is called once for each player that joins the game.
+            </summary>
+            <param name="player"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.PlayerLeft(StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            This method is called once for each player that leaves the game.
+            </summary>
+            <param name="player"></param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.Callback(System.String,System.Nullable{StudioForge.BlockWorld.GlobalPoint3D},StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.API.ITMActor)">
+            <summary>
+            Provides a generic game to mod callback.
+            Some game elements (e.g. scripts) can call the mod via this method and pass one string of data.
+            </summary>
+            <param name="data">It is up to the mod to parse this data.</param>
+            <param name="p">The coord of the block which executed the script, or null if no block involved.</param>
+            <param name="actor">The actor who executed the script.</param>
+            <param name="contextActor">The current context actor in the script.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.RegisterLuaFunctions(StudioForge.TotalMiner.API.ITMScriptInstance)">
+            <summary>
+            Provide an array of objects that contain functions you want accessible to lua scripts
+            Each method on each object that has the [LuaFuncRegister] Attribute will be registered and callable from lua script
+            This method may also be called by editor tools such as Code Completion to gather function names for script editing
+            </summary>
+            <param name="si">An object that has critical data related to the currently executing script instance. 
+            If si == null then this method is likely being called by an editor tool such as Code Completion.</param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPlugin.HandlePacket(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketReader)">
+            <summary>
+            Called when the mod receives a packet sent via <see cref="M:StudioForge.TotalMiner.ModPacket.Send(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketSendType)"/>.
+            </summary>
+            <param name="sender">The gamer that sent the packet.</param>
+            <param name="reader">The packet reader.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginArcade.GetArcadeMachine(System.Int32,StudioForge.TotalMiner.API.ITMGame,StudioForge.TotalMiner.API.ITMMap,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.BlockFace)">
+            <summary>
+            Called by the game when a player swings at an arcade block face.
+            </summary>
+            <returns>An instance of a type that subclasses ArcadeMachine to provide an Arcade game.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginArcade.GetArcadeMachineRenderer(System.Int32)">
+            <summary>
+            Called by the game when a player swings at an arcade block face.
+            </summary>
+            <returns>An instance of a type that implementes IArcadeMachineRenderer.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginArcade.GetArcadeMachineName(System.Int32)">
+            <summary>
+            Called by the game. Return the name of the Arcade game.
+            </summary>
+            <returns>The name of the Arcade game.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPlugin">
+            <summary>
+            Called by the game. Implemented by the mod. All mods must implement this method.
+            </summary>
+            <returns>An ITMPlugin implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginGUI">
+            <summary>
+            Called by the game. Implemented by mods that provide custom GUI screens.
+            </summary>
+            <returns>An ITMPluginGUI implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginBlocks">
+            <summary>
+            Called by the game. Implemented by mods that customize blocks.
+            </summary>
+            <returns>An ITMPluginBlocks implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginArcade">
+            <summary>
+            Called by the game. Implemented by mods that supply arcade block games.
+            </summary>
+            <returns>An ITMPluginArcade implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginNet">
+            <summary>
+            Called by the game. Implemented by mods that supply a networking server.
+            </summary>
+            <returns>An ITMPluginNet implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginBiome">
+            <summary>
+            Called by the game. Implemented by mods that supply a custom Biome generator.
+            </summary>
+            <returns>An ITMPluginBiome implementation.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMPluginProvider.GetPluginConfig">
+            <summary>
+            Called by the game. Implemented by mods that supply a custom configuration.
+            </summary>
+            <returns>An ITMPluginConfig implementation.</returns>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.Actor">
+            <summary>
+            The current actor (context)
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.Player">
+            <summary>
+            The current player (context) - can be null
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.Target">
+            <summary>
+            The current target (context) - can be null
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.Killer">
+            <summary>
+            The current killer (context) - can be null
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.NeedsCommit">
+            <summary>
+            Flag indicating if the script has edited voxels and therefor chunk meshes must be rebuilt
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.ItemID">
+            <summary>
+            The item which caused the script to execute (e.g. ItemSwingEvent)
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMScriptInstance.Random">
+            <summary>
+            The scripts prng
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.Info">
+            <summary>
+            Get the info of the texture pack.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.BlockTexture">
+            <summary>
+            Get the Blocks Texture2D object.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.BlockTextureLOD">
+            <summary>
+            Get the Blocks Level of Detail Texture2D object.
+            BlockTextureLOD = BlockTexture for SD texture packs.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.ItemTexture">
+            <summary>
+            Get the Items Texture2D object.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.ItemDepthTexture">
+            <summary>
+            Get the Items Model Depth Texture2D object.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.LightMapTexture">
+            <summary>
+            Get the Light Map Texture2D object.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMTexturePack.NightLightMapTexture">
+            <summary>
+            Get the Night time Light Map Texture2D object.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.BlockTextureSize">
+            <summary>
+            Get the size in pixels of a block on the current texture pack.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.ItemTextureSize">
+            <summary>
+            Get the size in pixels of an item on the current texture pack.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.GetTextureForItem(StudioForge.TotalMiner.Item)">
+            <summary>
+            Get the correct texture for an ItemID. If ItemID is >= Item.Hand then ItemTexture is returned, otherwise BlockTexture is returned.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.ItemSrcRect(StudioForge.TotalMiner.Item)">
+            <summary>
+            Returns the source rectangle for the item's texture in either BlockTexture or ItemTexture.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.GetBlockColorData(StudioForge.TotalMiner.Block)">
+            <summary>
+            Get Color data for a block. The array returned is a cached array and reused for each call, so you must use the data or copy it before calling this method again.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMTexturePack.GetItemColorData(StudioForge.TotalMiner.Item)">
+            <summary>
+            Get Color data for an item. The array returned is a cached array and reused for each call, so you must use the data or copy it before calling this method again.
+            </summary>
+        </member>
+        <member name="E:StudioForge.TotalMiner.API.ITMWorld.ComponentPasted">
+            <summary>
+            Raised whenever a component is pasted
+            ITMPLayer will be null if the component was not pasted by a player
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.GameMode">
+            <summary>
+            Returns the current game mode.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.Difficulty">
+            <summary>
+             Returns the current game diffculty setting.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsCreativeMode">
+            <summary>
+            Returns True if this is a Creative Mode world.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsFiniteResources">
+            <summary>
+            Returns True if Finite Resources is enabled.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsDynamicNaturalEnvironment">
+            <summary>
+            Returns True if Dynamic Natural Environment is enabled.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsSkillsEnabled">
+            <summary>
+            Returns True if Local or Global Skills are enabled.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsLocalSkillsEnabled">
+            <summary>
+            Returns True if Local Skills are enabled.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsLocalSkills">
+            <summary>
+            Returns True if this is a Local Skills world.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.CurrentHour">
+            <summary>
+            Returns the current hour of the world, where 0 is midnight and 12 is noon.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsDayTime">
+            <summary>
+            Returns True if it is currently day time.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.IsNightTime">
+            <summary>
+            Returns True if it is currently night time.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.Map">
+            <summary>
+            Returns a reference to the Map object.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.Header">
+            <summary>
+            Returns header data about the current world. This property returns a clone so that if you change a field on the object it does not effect the actual world header. For this reason it is best to cache this object and only call this getter again if it is critical to have any changes that might have been made since the last time you called the getter (such as a map rename).
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.WorldPath">
+            <summary>
+            Returns the full file path for the current world.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.CurrentBiome">
+            <summary>
+            Returns the worlds current Biome.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.History">
+            <summary>
+            System History.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ITMWorld.Zones">
+            <summary>
+             Returns a List of all Zones in the world.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.GetBlockBox(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.Block)">
+            <summary>
+            Returns a bounding box that correctly surrounds the block at a given position, and is suitable for collision detection.
+            </summary>
+            <param name="p">The position of the block.</param>
+            <param name="blockID">The blockID at position p.</param>
+            <returns>The bounding box.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.AddParticle(Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.Graphics.ParticleData@)">
+            <summary>
+            Spawn a new particle into the game world.
+            </summary>
+            <param name="pos">World start position of the particle (center).</param>
+            <param name="data">Data describing the particle.</param>
+            <returns>Returns true if the particle was spawned successfully.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.AddPickup(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.InventoryItem)">
+            <summary>
+            Adds an item/block pickup to the world.
+            </summary>
+            <param name="p">World Tile position where the pickup is spawned.</param>
+            <param name="item">Inventory data describing the pickup contents.</param>
+            <returns>Returns true of the pickup was successfully added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.AddPickup(Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.InventoryItem,Microsoft.Xna.Framework.Vector2,System.Single,StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            Adds an item/block pickup to the world.
+            </summary>
+            <param name="pos">World position where the pickup is spawned.</param>
+            <param name="item">Inventory data describing the pickup contents.</param>
+            <param name="velocity">Initial velocity of pickup.</param>
+            <param name="minPickupAge">The minimum lifetime of the pickup. The actual lifetime of the pickup is calculated based on the item.ItemID. But if you want the pickup to live longer, than pass the lifetime you want here in seconds.</param>
+            <param name="player">The owner of the pickup. Pass null for no owner.</param>
+            <returns>Returns true of the pickup was successfully added.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.AddProjectile(StudioForge.TotalMiner.Item,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.API.ITMPlayer,System.Boolean)">
+            <summary>
+            Adds a projectile textured for the itemID.
+            </summary>
+            <param name="itemID">The item of the projectile.</param>
+            <param name="position">The origin position of the projectile.</param>
+            <param name="velocity">The start velocity of the projectile. The projectile is affected by the world gravity.</param>
+            <param name="player">The player who created the projectile.</param>
+            <param name="transmit">True if the projectile should be created on remote clients.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.AddMapMarker(StudioForge.BlockWorld.GlobalPoint3D,System.String,StudioForge.TotalMiner.MapMarkerType,System.Boolean)">
+            <summary>
+            Add a Marker to the world overview map.
+            </summary>
+            <param name="p">The map position for the marker. Y is ignored.</param>
+            <param name="text">The marker text or label.</param>
+            <param name="type">The type of marker.</param>
+            <param name="transmit">True if remotes should also add the marker.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.RayBlockTest(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Casts a ray test for block collision detection.
+            </summary>
+            <param name="position">The origin position of the ray.</param>
+            <param name="dir">The direction of the ray.</param>
+            <param name="range">The range (distance in meters) of the ray. For performance considerations it is best to limit the range to the shortest necessary.</param>
+            <returns>The result of the test.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.IsBlockDeliveringPower(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Returns true if a block position is currently delivering power.
+            </summary>
+            <param name="p">Block position</param>
+            <returns>Returns true if a block position is currently delivering power.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.IsBlockReceivingPower(StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Returns true if a block position is currently receiving power.
+            </summary>
+            <param name="p">Block position</param>
+            <returns>Returns true if a block position is currently receiving power.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.SetPower(StudioForge.BlockWorld.GlobalPoint3D,System.Boolean,StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            Set power on or off for a block at a position in the map. Any powered mechanism block at that position will react. Setting power on for a block that is already powered has no effect, likewise setting power off for a block that is not powered has no effect.
+            </summary>
+            <param name="p">Map position.</param>
+            <param name="power">True (on) or False (off).</param>
+            <param name="player">The player who powered the block or -1 if no player.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.GetClosestListener(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Returns the AudioListener object of the closest local player to a (sound source) position.
+            </summary>
+            <param name="position">The source position of the sound.</param>
+            <returns>The AudioListener object of the closest local player, or null.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.BroadcastSound(Microsoft.Xna.Framework.Vector3,StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.SoundType)">
+            <summary>
+            Instruct the game to broadcast a sound emission to other actors.
+            </summary>
+            <param name="origin">The origin position of the sound emission.</param>
+            <param name="actor">The actor who emitted the sound.</param>
+            <param name="soundType">The type of sound emitted.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.IsAnyLocalPlayerInProximity(Microsoft.Xna.Framework.Vector3,System.Single,System.Boolean)">
+            <summary>
+            Returns true if any local player is within a proximity
+            </summary>
+            <param name="pos">World position of proximity center.</param>
+            <param name="range">Proximity radius.</param>
+            <param name="eye">True = Test players Eye position. False = Test players Foot position.</param>
+            <returns>True if at least one local player is within proximity.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.CreateBlast(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.Item,System.Single,System.Int32,StudioForge.TotalMiner.API.ITMPlayer)">
+            <summary>
+            Create a blast explosion
+            </summary>
+            <param name="p">World Tile position at blast center.</param>
+            <param name="itemID">Item that created the blast.</param>
+            <param name="strength">Blast strength.</param>
+            <param name="radius">Blast radius.</param>
+            <param name="player">Player that created the blast or -1 if no player.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.CreateFallingBlock(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.API.ITMPlayer,StudioForge.BlockWorld.UpdateBlockMethod,System.Action{StudioForge.TotalMiner.ItemParticle},System.Boolean)">
+            <summary>
+            Causes a block to start falling until it hits another block.
+            </summary>
+            <param name="p">World Tile position of source block.</param>
+            <param name="player">Player who caused the block to fall or -1 if no player.</param>
+            <param name="method">Update method.</param>
+            <param name="onRest">This method is called when the falling block comes to rest. Pass null for no callback.</param>
+            <param name="transmit">True = Transmit over the network to remote players. False = Local operation only.</param>
+            <returns></returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.FloodPhysics(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.TotalMiner.Block,StudioForge.TotalMiner.API.ITMPlayer,System.Boolean)">
+            <summary>
+            Creates a flood.
+            </summary>
+            <param name="p">Flood source position.</param>
+            <param name="blockID">Block to flood with.</param>
+            <param name="player">Player who created the flood or -1 if no player.</param>
+            <param name="transmit">True = Transmit flood over network to remote players. False = Local operation only.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ITMWorld.TeleportEntities(StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.GlobalPoint3D,StudioForge.BlockWorld.GlobalPoint3D,System.Boolean)">
+            <summary>
+            Teleport all entities in an area to another position.
+            </summary>
+            <param name="min">The minimum Tile position of the area.</param>
+            <param name="max">The maximum Tile position of the area. Using both min and max, a cubic area is defined.</param>
+            <param name="dest">The destination Tile position to teleport the entities to.</param>
+            <param name="relative">False = all entities are teleported directly to tile position 'dest' regardless of their position in the area. True = all entities are teleported to a tile position relative to 'dest' and their original position relative to 'min'. e.g. final position = dest + (entity position - min)</param>
+        </member>
+        <member name="T:StudioForge.TotalMiner.API.ModActorDataAttribute">
+            <summary>
+            Apply to a subtype of <see cref="T:StudioForge.TotalMiner.API.ModActorData"/> to automatically apply the data to the specified actors.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.ModActorDataAttribute.IncludeActors">
+            <summary>
+            The actors to apply the data to, or null or empty if the data should apply to all actors.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.ModActorDataAttribute.ExcludeActors">
+            <summary>
+            The actors that the data will not be applied to, or null or empty if no actors should be excluded.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.DamageInfo.Damage">
+            <summary>
+            The damage of the attack.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.DamageInfo.Multiplier">
+            <summary>
+            The multiplier applied to <see cref="F:StudioForge.TotalMiner.API.DamageInfo.Damage"/> after all modifiers are applied.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.DamageInfo.DamageType">
+            <summary>
+            The type of damage.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.CriticalInfo.Chance">
+            <summary>
+            The chance of the attack being a critical hit, where 0 == 0%, and 1 == 100%
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.CriticalInfo.ChanceMultiplier">
+            <summary>
+            The total multiplier applied to <see cref="F:StudioForge.TotalMiner.API.CriticalInfo.Chance"/> after all modifiers are applied.
+            </summary>
+        </member>
+        <member name="F:StudioForge.TotalMiner.API.CriticalInfo.DamageMultiplier">
+            <summary>
+            The damage multiplier used if this attack is a critical hit.
+            </summary>
+        </member>
+        <member name="T:StudioForge.TotalMiner.API.ModActorData">
+            <summary>
+            Used to add custom data and hooks to actors. Apply the <see cref="T:StudioForge.TotalMiner.API.ModActorDataAttribute"/> to automatically add a new instance of this class to all/specified actors using the empty constructor.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ModActorData.ShouldWriteState">
+            <summary>
+            If true, this data will be written to disk and transmitted when a player joins the game. Override <see cref="M:StudioForge.TotalMiner.API.ModActorData.WriteStateCore(System.IO.BinaryWriter)"/> and <see cref="M:StudioForge.TotalMiner.API.ModActorData.ReadStateCore(System.IO.BinaryReader,System.Int32)"/> to write/read your data.
+            </summary>
+            <remarks>
+            This only handles networking for when a player initially joins the game or an actor is spawned, further networking must be handled using <see cref="M:StudioForge.TotalMiner.API.ITMGame.CreatePacket(StudioForge.TotalMiner.API.ITMMod)"/> and <see cref="M:StudioForge.TotalMiner.API.ITMPlugin.HandlePacket(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketReader)"/>.
+            </remarks>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ModActorData.Priority">
+            <summary>
+            The priority value of this data. Data with lower priority will be executed first. Default 100.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ModActorData.Actor">
+            <summary>
+            The actor this data belongs to.
+            </summary>
+        </member>
+        <member name="P:StudioForge.TotalMiner.API.ModActorData.Game">
+            <summary>
+            The main game instance.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.InitializeCore">
+            <summary>
+            Called after this data is added to an actor and initialized.
+            </summary>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyStrikeReach(System.Single@)">
+            <summary>
+            Used to modify how far the actor can reach with weapons. Does not affect tool or block placement reach, change <see cref="P:StudioForge.TotalMiner.API.ITMActor.Reach"/> for that.
+            </summary>
+            <remarks>
+            Runs on the server for NPCs, or the client for players.
+            </remarks>
+            <param name="strikeReach">The strike reach of the actor. Modify this to change the strike reach.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyCriticalHit(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.CriticalInfo@)">
+            <summary>
+            Used to modify the chance and multiplier of critical hits.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="target">The target to attack.</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="critical">The critical info. Modify this to change the chance or multiplier of the critical hit.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyDamageDealt(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo@)">
+            <summary>
+            Used to modify the damage dealt by an attack. This is called before the attack is blocked or any critical multipliers are applied.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="target">The target to attack.</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage being dealt. Modify this to change the damage.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyDamageTaken(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo@)">
+            <summary>
+            Used to modify the damage taken by any source. This is called after the attack is blocked and any critical multipliers are applied.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="attacker">The actor attacking this actor. This may be null if there is not attacker (eg. fall damage)</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage being dealt. Modify this to change the damage.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyXPGain(StudioForge.BlockWorld.SkillType,StudioForge.TotalMiner.InventoryItem,System.Single@)">
+            <summary>
+            Used to modify the XP gained by the actor.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="skill">The skill the actor is gaining XP for.</param>
+            <param name="item">The item involved in the gain.</param>
+            <param name="xp">The XP gained. Modify this to change the XP gain.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyMaxJumpCount(System.Int32@)">
+            <summary>
+            Used to modify how many times the actor can jump. 2 allows the actor to double jump, 3 triple jump, etc.
+            </summary>
+            <remarks>
+            Runs on the server for NPCs, or the client for players.
+            </remarks>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyMaxHealth(System.Single@)">
+            <summary>
+            Used to modify the max health of the actor. Called every frame.
+            </summary>
+            <remarks>
+            Runs on the client and server.
+            </remarks>
+            <param name="maxHealth">The health of the actor before the modifier. Modify this to change the max health. This value will not change the next time this is called.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyMaxOxygen(System.Single@)">
+            <summary>
+            Used to modify the max oxygen of the actor. Called every frame.
+            </summary>
+            <remarks>
+            Runs on the client and server.
+            </remarks>
+            <param name="maxOxygen">The oxygen of the actor before the modifier. Modify this to change the max oxygen. This value will not change the next time this is called.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyMaxStamina(System.Single@)">
+            <summary>
+            Used to modify the max stamina of the actor. Called every frame.
+            </summary>
+            <remarks>
+            Runs on the client and server.
+            </remarks>
+            <param name="maxStamina">The stamina of the actor before the modifier. Modify this to change the max stamina. This value will not change the next time this is called.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyMovementSpeedMultiplier(System.Single@)">
+            <summary>
+            Used to modify the movement speed of the actor.
+            </summary>
+            <remarks>
+            Runs on the server for NPCs, or the client for players.
+            </remarks>
+            <param name="multiplier">The speed multiplier.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyRotationSpeedMultiplier(System.Single@)">
+            <summary>
+            Used to modify the rotation speed of the actor. Only affects NPCs.
+            </summary>
+            <remarks>
+            Runs on the server.
+            </remarks>
+            <param name="multiplier">The rotation speed multiplier.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyNameplateHealthColors(StudioForge.TotalMiner.API.HUDBarColors@)">
+            <summary>
+            Used to modify the colors of the health bars above players or NPCs.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="colors">The colors of the health bar. Modify this to change the colors of the health bar.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyHealthBarColors(StudioForge.TotalMiner.API.HUDBarColors@)">
+            <summary>
+            Used to modify the colors of the health bar for the local player or player being spectated.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="colors">The colors of the health bar. Modify this to change the colors of the health bar.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyOxygenBarColors(StudioForge.TotalMiner.API.HUDBarColors@)">
+            <summary>
+            Used to modify the colors of the oxygen bar for the local player or player being spectated.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="colors">The colors of the oxygen bar. Modify this to change the colors of the oxygen bar.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyStaminaBarColors(StudioForge.TotalMiner.API.HUDBarColors@,System.Boolean)">
+            <summary>
+            Used to modify the colors of the stamina bar for the local player or player being spectated.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="colors">The colors of the stamina bar. Modify this to change the colors of the stamina bar.</param>
+            <param name="isCooldown">True if stamina is currently on cooldown and regenerating, otherwise false.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ModifyLanturn(StudioForge.TotalMiner.API.Lanturn@)">
+            <summary>
+            Used to modify the lanturn color and range. This is the light used by held torches and the Amulet of Starlight. Can be used to change the light color and range, or add light under other conditions. Only affects the local player or player being spectated.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="lanturn">The lanturn. Modify this to change the color and range of the light.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanBlockAttack(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo)">
+            <summary>
+            Used to control whether or not an attack can be blocked with a shield. If any data returns false here, the attack cannot be blocked.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="attacker">The actor attacking this actor.</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage being dealt.</param>
+            <returns>True if an attack is blockable, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanPlaceBlock(StudioForge.TotalMiner.Block,StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Used to control whether or not a block can be placed. If any data returns false here, the block cannot be placed.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="block">The block to place.</param>
+            <param name="p">The position the block is being placed at.</param>
+            <returns>True if the block can be placed, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanMineBlock(StudioForge.TotalMiner.Block,StudioForge.TotalMiner.InventoryItem,StudioForge.BlockWorld.GlobalPoint3D)">
+            <summary>
+            Used to control whether or not a block can be mined. If any data returns false here, the block cannot be mined.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="block">The block to place.</param>
+            <param name="tool">The tool being used to mine the block.</param>
+            <param name="p">The position of the block.</param>
+            <returns>True if the block can be mined, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanSwing(StudioForge.TotalMiner.InventoryItem)">
+            <summary>
+            Used to control whether or not the actor can swing an item. If any data returns false here, the actor cannot swing the item.
+            </summary>
+            <remarks>
+            Runs on the server for NPCs, or the client for players.
+            </remarks>
+            <returns>True if the actor can swing the item, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanJump">
+            <summary>
+            Used to control whether or not the actor can jump. If any data returns false here, the actor cannot jump.
+            </summary>
+            <remarks>
+            Runs on the server for NPCs, or the client for players.
+            </remarks>
+            <returns>True if the actor can jump, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.CanSprint">
+            <summary>
+            Used to control whether or not the actor can sprint. If any data returns false here, the actor cannot sprint. Only affects players.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <returns>True if the actor can sprint, otherwise false.</returns>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.OnDamageDealt(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo)">
+            <summary>
+            Called when the actor deals damage to a target. This will only be called if an attack deals more than 0 damage.
+            </summary>
+            <remarks>
+            Runs on the client and server.
+            </remarks>
+            <param name="target">The target attacked.</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage dealt.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.OnDamageTaken(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo)">
+            <summary>
+            Called when the actor takes damage from any source. This will only be called if the actor takes more than 0 damage.
+            </summary>
+            <remarks>
+            Runs on the client and server.
+            </remarks>
+            <param name="attacker">The actor attacking this actor. This may be null if there is not attacker (eg. fall damage)</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage taken.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.OnDeath(StudioForge.TotalMiner.API.ITMActor,StudioForge.TotalMiner.InventoryItem,StudioForge.TotalMiner.API.DamageInfo,System.Boolean@)">
+            <summary>
+            Called when the actor dies from any source.
+            </summary>
+            <remarks>
+            Runs on the client on server.
+            </remarks>
+            <param name="attacker">The attacker that killed the actor, or null if there was no attacker.</param>
+            <param name="weapon">The weapon used.</param>
+            <param name="damage">The damage that resulted in the death.</param>
+            <param name="shouldDropInventory">If true, the actor will drop its inventory on death. Only works for the local player, and NPCs on the server.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.OnLevelUp(StudioForge.BlockWorld.SkillType,System.Int32)">
+            <summary>
+            Called when the actor levels up a skill.
+            </summary>
+            <remarks>
+            Runs on both the client and server.
+            </remarks>
+            <param name="skill">The skill being leveled.</param>
+            <param name="level">The new level of the skill.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.OnItemCrafted(StudioForge.TotalMiner.InventoryItem)">
+            <summary>
+            Called when the player crafts an item.
+            </summary>
+            <remarks>
+            Runs on the client.
+            </remarks>
+            <param name="item">The item crafted.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.WriteStateCore(System.IO.BinaryWriter)">
+            <summary>
+            Used to write the binary state of this data. See <see cref="P:StudioForge.TotalMiner.API.ModActorData.ShouldWriteState"/> for more info.
+            </summary>
+            <param name="writer">The binary writer.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.API.ModActorData.ReadStateCore(System.IO.BinaryReader,System.Int32)">
+            <summary>
+            Used to read the binary state of this data. See <see cref="P:StudioForge.TotalMiner.API.ModActorData.ShouldWriteState"/> for more info.
+            </summary>
+            <param name="reader">The binary reader.</param>
+            <param name="version">The Total Miner version the data was saved on.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.ModPacket.Send(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketSendType)">
+            <summary>
+            Send this packet to a gamer.
+            </summary>
+            <param name="recipient">The recipient to send the packet to. Null to send to all gamers.</param>
+            <param name="sendType">The type of packet to send.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.ModPacket.SendToAll(StudioForge.Engine.Net.PacketSendType)">
+            <summary>
+            Send this packet to all gamers in the session. Equivalent to <see cref="M:StudioForge.TotalMiner.ModPacket.Send(StudioForge.Engine.Net.NetworkGamer,StudioForge.Engine.Net.PacketSendType)"/> with a null recipient.
+            </summary>
+            <param name="sendType">The type of packet to send.</param>
+        </member>
+        <member name="M:StudioForge.TotalMiner.Sounds.Initialize(StudioForge.TotalMiner.API.ITMGame)">
+            <summary>
+            Implementation detail. Consumers should not call.
+            </summary>
+            <param name="game">Game Instance</param>
+        </member>
+    </members>
+</doc>

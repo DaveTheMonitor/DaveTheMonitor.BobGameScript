@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaveTheMonitor.BobGameScript", "DaveTheMonitor.BobGameScript\DaveTheMonitor.BobGameScript.csproj", "{11AA9323-4BDA-4883-AA21-390E344692B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildBobGame", "BuildBobGame\BuildBobGame.csproj", "{38160D06-B66A-43FA-AB7D-21EBBADC3828}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BobGameBuilder", "BobGameBuilder\BobGameBuilder.shproj", "{98E273D7-554F-471B-822E-A6CACD8F6996}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7FF36D9B-C6E8-4203-A1B4-5DF076EE9F2D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11AA9323-4BDA-4883-AA21-390E344692B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11AA9323-4BDA-4883-AA21-390E344692B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11AA9323-4BDA-4883-AA21-390E344692B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11AA9323-4BDA-4883-AA21-390E344692B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38160D06-B66A-43FA-AB7D-21EBBADC3828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38160D06-B66A-43FA-AB7D-21EBBADC3828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38160D06-B66A-43FA-AB7D-21EBBADC3828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38160D06-B66A-43FA-AB7D-21EBBADC3828}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8B42CE4-B884-4021-9461-96B2E7051CB5}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		BobGameBuilder\BobGameBuilder.projitems*{11aa9323-4bda-4883-aa21-390e344692b1}*SharedItemsImports = 5
+		BobGameBuilder\BobGameBuilder.projitems*{38160d06-b66a-43fa-ab7d-21ebbadc3828}*SharedItemsImports = 5
+		BobGameBuilder\BobGameBuilder.projitems*{98e273d7-554f-471b-822e-a6cacd8f6996}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

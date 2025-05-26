@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>98e273d7-554f-471b-822e-a6cacd8f6996</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>BobGameBuilder</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)FontInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ScriptBuild.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpriteInfo.cs" />
+  </ItemGroup>
+</Project>

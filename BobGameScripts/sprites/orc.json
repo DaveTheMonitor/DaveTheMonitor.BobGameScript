@@ -1,0 +1,22 @@
+{
+    "Palette": {
+        "109,142,145": "Andesite",
+        "126,126,126": "Diorite",
+        "51,51,51": "Cassiterite",
+        "65,65,65": "ColorDarkGray",
+        "69,70,75": "Dacite",
+        "156,156,156": "ColorGray",
+        "96,96,96": "Limestone",
+        "27,27,27": "Titanium",
+        "117,93,76": "Iron",
+        "80,55,32": "Wood",
+        "107,107,107": "Basalt",
+        "255,255,255": "ColorWhite",
+        "198,198,198": "Marble"
+    },
+    "data": {
+        "offset_x": -6,
+        "flip_offset_x": -10,
+        "offset_y": -14
+    }
+}

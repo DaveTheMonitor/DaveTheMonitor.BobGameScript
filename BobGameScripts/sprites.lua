@@ -1,0 +1,2 @@
+--#priority 201
+--#external sprites sprite_manager

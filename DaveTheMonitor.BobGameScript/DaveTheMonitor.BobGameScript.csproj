@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.1.303">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="KeraLua">
+      <HintPath>Assembly\KeraLua.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua">
+      <HintPath>Assembly\NLua.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.BlockWorld">
+      <HintPath>Assembly\StudioForge.BlockWorld.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Components">
+      <HintPath>Assembly\StudioForge.Engine.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Core">
+      <HintPath>Assembly\StudioForge.Engine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Game">
+      <HintPath>Assembly\StudioForge.Engine.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.GamerServices">
+      <HintPath>Assembly\StudioForge.Engine.GamerServices.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.GUI">
+      <HintPath>Assembly\StudioForge.Engine.GUI.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Integration">
+      <HintPath>Assembly\StudioForge.Engine.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Net">
+      <HintPath>Assembly\StudioForge.Engine.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Renderers">
+      <HintPath>Assembly\StudioForge.Engine.Renderers.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.Engine.Services">
+      <HintPath>Assembly\StudioForge.Engine.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="StudioForge.TotalMiner.API">
+      <HintPath>Assembly\StudioForge.TotalMiner.API.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\BobGameBuilder\BobGameBuilder.projitems" Label="Shared" />
+</Project>

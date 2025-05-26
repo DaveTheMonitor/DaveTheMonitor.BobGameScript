@@ -1,0 +1,15 @@
+#build
+- Adds this script to the build.
+
+#priority int
+- Controls the priority of the script build. Lower priority files are built before higher priority files. It is recommended to group your priorities. eg. 2xx for game objects, 3xx for levels, etc. The entry point (the file that calls Game.run) should be the highest priority.
+- 0xx is reserved for preload (eg. utils)
+- 1xx is reserved for the engine
+
+#external type args
+- Marks a file to be filled with generated code.
+- Types
+  - sprites (SpriteManager name)
+
+#script name
+- Marks a file as being part of a different script. Multiple files can be built into a single script like the main game.

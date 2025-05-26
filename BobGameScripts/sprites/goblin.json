@@ -1,0 +1,13 @@
+{
+    "Palette": {
+        "30,30,30": "ColorBlack",
+        "54,54,54": "ColorDarkGray",
+        "157,157,157": "Limestone",
+        "171,171,171": "ColorGray",
+        "86,86,86": "Gabbro",
+        "103,68,58": "Dirt",
+        "64,39,32": "ColorDarkBrown",
+        "255,255,255": "ColorWhite",
+        "198,198,198": "Marble"
+    }
+}
