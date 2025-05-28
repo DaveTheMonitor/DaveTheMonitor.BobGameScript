@@ -121,9 +121,17 @@ function Player:add_event_listeners()
 end
 
 function Player:update()
+    Entity.update(self)
     self:update_input()
 
-    Entity.update(self)
+    if self.x < 0 then
+        self.x = 0
+        self.vel_x = 0
+    elseif self.x > self.game.screen.width - 1 then
+        -- subtract 1 so both pixels of the body are visible
+        self.x = self.game.screen.width - 1
+        self.vel_x = 0
+    end
 end
 
 ---@param params combo_type_event_params
@@ -247,15 +255,6 @@ function Player:update_movement_input()
         end
         acc = acc * self.friction
         self.acceleration = acc
-    end
-
-    if self.x < 0 then
-        self.x = 0
-        self.vel_x = 0
-    elseif self.x > self.game.screen.width - 1 then
-        -- subtract 1 so both pixels of the body are visible
-        self.x = self.game.screen.width - 1
-        self.vel_x = 0
     end
 end
 

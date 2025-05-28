@@ -241,16 +241,15 @@ function AnimationInstance:update()
 
     -- The prev time and current time may be equal if the animation
     -- is holding
-    if self.length == 0 and prev_time == 0 then
-        -- specific fix for 0 length animations not triggering properly
-        self:trigger_events(0, 0)
-    elseif prev_time ~= time then
+    if prev_time ~= time then
         -- animation looped
         if prev_time > time then
-            self:trigger_events(0, time)
-            self:trigger_events(prev_time, self.length)
+            self:trigger_events(0, time, true)
+            self:trigger_events(prev_time, self.length, false)
         else
-            self:trigger_events(prev_time, time)
+            -- We don't trigger the first frame here because that's
+            -- done immediately on state change
+            self:trigger_events(prev_time, time, false)
         end
     end
 
@@ -263,17 +262,22 @@ end
 ---@private
 ---@param min number
 ---@param max number
-function AnimationInstance:trigger_events(min, max)
+---@param trigger_first_frame boolean
+function AnimationInstance:trigger_events(min, max, trigger_first_frame)
     local frames = self.state.animation:get_all_frames(min, max)
     if frames ~= nil then
         -- If 1 is not nil, this must be an array, otherwise
         -- it's a single frame
         if frames[1] ~= nil then
             for i, frame in ipairs(frames) do
-                self:trigger_event(frame)
+                if trigger_first_frame or self.state.animation:get_frame(0) ~= frames[i] then
+                    self:trigger_event(frame)
+                end
             end
         else
-            self:trigger_event(frames--[[@as animation_frame]])
+            if trigger_first_frame or self.state.animation:get_frame(0) ~= frames then
+                self:trigger_event(frames--[[@as animation_frame]])
+            end
         end
     end
 end
@@ -282,7 +286,7 @@ end
 ---@param frame animation_frame
 function AnimationInstance:trigger_event(frame)
     if frame.events ~= nil then
-        for i, event in ipairs(frame.events) do
+        for _, event in ipairs(frame.events) do
             if event.name == "callback" then
                 local params = event.params--[[@as callback_event_params]]
                 params.callback(self.owner)
@@ -310,6 +314,7 @@ function AnimationInstance:change_state(state_name)
         self.finished = false
         self.state = state
         self.length = state.animation.length
+        self:trigger_event(self.state.animation:get_frame(0))
     end
 end
 

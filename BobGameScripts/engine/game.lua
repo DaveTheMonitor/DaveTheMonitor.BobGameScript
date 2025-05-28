@@ -73,6 +73,7 @@ function Game:run()
             self.input:advance()
             accumulator = accumulator - (update_rate)
             updated = true
+            Time.total_time = Time.total_time + Time.delta_time
         end
         if not self.is_active then
             break

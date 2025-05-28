@@ -109,12 +109,9 @@ function Entity:add_event_listeners()
 end
 
 function Entity:update()
-    self.animation:update()
-
     self:update_stagger()
     self:update_movement()
 
-    self.grounded = self.y == self.game.level.ground_level
     if self.damage_on_impact ~= 0 and self.y < self.game.level.ground_level + 8 and (self.grounded or math.abs(self.vel_x + self.vel_y) < 4) then
         self.damage_on_impact = 0
         self.damage_on_impact_tags = nil
@@ -159,6 +156,7 @@ function Entity:update()
     end
 
     self.time_since_damaged = self.time_since_damaged + Time.delta_time
+    self.animation:update()
 end
 
 function Entity:update_stagger()
@@ -208,6 +206,8 @@ function Entity:update_movement()
             self.vel_y = 0
         end
     end
+
+    self.grounded = self.y == self.game.level.ground_level
 end
 
 ---@param x number
