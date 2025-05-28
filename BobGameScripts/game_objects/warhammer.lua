@@ -269,10 +269,10 @@ function Warhammer:initialize()
         [0.04] = AnimationFrame.new(Rectangle.new(64, 144, 16, 16)),
         [0.08] = AnimationFrame.new(Rectangle.new(80, 144, 16, 16)),
         [0.12] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16)),
-        [0.50] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16), {
+        [0.42] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16), {
             "enable_movement"
         }),
-    }, 0.50, LoopType.Hold)
+    }, 0.42, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then

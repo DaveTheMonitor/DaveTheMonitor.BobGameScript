@@ -420,11 +420,18 @@ function Sword:initialize()
             EventTrigger.new("attack", { damage = 5, box = Rectangle.new(0, 0, 15, 10), stagger = StaggerInfo.new(70, 40, 1) })
         }),
         [0.04] = AnimationFrame.new(Rectangle.new(112, 16, 16, 16)),
-    }, 0.04, LoopType.Hold)
+        [0.34] = AnimationFrame.new(Rectangle.new(112, 16, 16, 16), {
+            "enable_movement"
+        }),
+    }, 0.34, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.total_time > self.animation.length + 0.4 then
-            return "sword_ground_end_2"
+            return "sword_ground_end_1"
+        end
+
+        if self.animation.finished then
+            return default_sword_transition(self, true)
         end
 
         return nil

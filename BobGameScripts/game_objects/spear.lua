@@ -362,13 +362,13 @@ function Spear:initialize()
     anim = anim_controller:add_state("spear_air_down_stab_miss")
     anim.animation = Animation.new({
         [0.00] = AnimationFrame.new(Rectangle.new(160, 96, 16, 16)),
-        [0.70] = AnimationFrame.new(Rectangle.new(176, 96, 16, 16)),
-        [0.82] = AnimationFrame.new(Rectangle.new(192, 96, 16, 16), {
+        [0.60] = AnimationFrame.new(Rectangle.new(176, 96, 16, 16)),
+        [0.72] = AnimationFrame.new(Rectangle.new(192, 96, 16, 16), {
             "enable_movement"
         }),
-        [0.94] = AnimationFrame.new(Rectangle.new(208, 96, 16, 16)),
-        [1.06] = AnimationFrame.new(Rectangle.new(208, 32, 16, 16)),
-    }, 1.18, LoopType.Hold)
+        [0.84] = AnimationFrame.new(Rectangle.new(208, 96, 16, 16)),
+        [0.96] = AnimationFrame.new(Rectangle.new(208, 32, 16, 16)),
+    }, 1.08, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         
@@ -376,7 +376,7 @@ function Spear:initialize()
             return "spear_idle"
         end
 
-        if self.animation.time >= 0.82 then
+        if self.animation.time >= 0.72 then
             return default_spear_transition(self, true) or self:transition_to_any_movement_state(true, false, false)
         end
 
