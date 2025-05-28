@@ -22,7 +22,7 @@ InputBindings.__index = InputBindings
 
 ---@return input_bindings
 function InputBindings.new()
-    local self = setmetatable({}, InputBindings)
+    local self = setmetatable({}, InputBindings)--[[@as input_bindings]]
     self.keys = {
         [InputType.move_left] = Keys.a,
         [InputType.move_right] = Keys.d,
@@ -72,7 +72,7 @@ function InputBindings:set_button(input, button)
     self.buttons[input] = button
 end
 
----@class input_manager
+---@class (exact) input_manager
 ---@field private pressed_inputs { [input_type]: number }
 ---@field private pending_up_inputs { [input_type]: number }
 ---@field private hooked_events boolean
@@ -82,19 +82,21 @@ end
 ---@field public on_key_down fun(key: keys)
 ---@field public on_button_down fun(button: buttons)
 ---@field public bindings input_bindings
+---@field public __index table
+---@field public new function
 InputManager = {}
 InputManager.__index = InputManager
 
 ---@return input_manager
 function InputManager.new()
-    local self = setmetatable({}, InputManager)
+    local self = setmetatable({}, InputManager)--[[@as input_manager]]
     self.pressed_inputs = {}
     self.pending_up_inputs = {}
     self.hooked_events = false
     self.gamepad = false
     self.prev_gamepad_x = 0
     self.prev_gamepad_y = 0
-    for key, value in pairs(InputType) do
+    for _, value in pairs(InputType) do
         self.pressed_inputs[value] = -1
     end
     self.bindings = InputBindings.new()
@@ -105,19 +107,19 @@ end
 function InputManager:hook_events()
     local mgr = self
     hook_event(ModEvent.key_up, function(key)
-        ---@diagnostic disable-next-line
+        ---@diagnostic disable-next-line: invisible
         mgr:key_up(key)
     end)
     hook_event(ModEvent.key_down, function(key)
-        ---@diagnostic disable-next-line
+        ---@diagnostic disable-next-line: invisible
         mgr:key_down(key)
     end)
     hook_event(ModEvent.button_up, function(button)
-        ---@diagnostic disable-next-line
+        ---@diagnostic disable-next-line: invisible
         mgr:button_up(button)
     end)
     hook_event(ModEvent.button_down, function(button)
-        ---@diagnostic disable-next-line
+        ---@diagnostic disable-next-line: invisible
         mgr:button_down(button)
     end)
     self.hooked_events = true
@@ -251,7 +253,7 @@ end
 ---@param z number
 function InputManager:pump_vanilla(x, y, z)
     local deadzone = 0.5
-    -- We base input off the player's view direction
+    -- We base input on the player's view direction
     local px, py, pz = get_pos()
     local vx, vy, vz = get_view_dir()
     vx, vz = normalize(vx, vz)

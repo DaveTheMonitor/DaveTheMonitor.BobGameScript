@@ -4,7 +4,7 @@
 ---@class enemy : entity
 ---@field off_screen boolean
 ---@field ai_enabled boolean
-Enemy = Entity.new()
+Enemy = setmetatable({}, Entity)
 Enemy.__index = Enemy
 
 ---@return enemy
@@ -15,6 +15,8 @@ function Enemy.new()
     return self
 end
 
+---@param attacker entity
+---@return boolean
 function Enemy:should_take_damage(attacker)
     return not self.off_screen
 end

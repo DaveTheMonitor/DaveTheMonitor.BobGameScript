@@ -3,9 +3,10 @@
 
 ---@class hills : level
 ---@field private time_until_cloud number
-Hills = Level.new()
+Hills = setmetatable({}, Level)
 Hills.__index = Hills
 
+---@return hills
 function Hills.new()
     local self = setmetatable(Level.new(), Hills)--[[@as hills]]
     return self

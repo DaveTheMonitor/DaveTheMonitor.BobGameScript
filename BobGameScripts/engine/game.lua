@@ -27,15 +27,15 @@ Game.__index = Game
 
 function Game.new()
     local self = setmetatable({}, Game)
+    self.is_active = true
     return self
 end
 
----@param game game
-function Game.run(game)
-    game:initialize_base()
+function Game:run()
+    self:initialize_base()
 
     if is_mod_input_enabled then
-        game:clear_buttons()
+        self:clear_buttons()
     end
 
     timer_reset()
@@ -43,7 +43,7 @@ function Game.run(game)
     local accumulator = 0
     local frame_start = get_timer()
     local update_rate = 1 / 60
-    while game.is_active do
+    while self.is_active do
         -- Input requires some wierd update logic
         -- is_input_pressed should return true of the first frame an input is pressed
         -- If we update input only once per loop, then multiple frames may get true for
@@ -57,8 +57,8 @@ function Game.run(game)
         -- We advance every step
         -- Doing these separately allows us to properly register "first frame" inputs, while
         -- not ignoring inputs on subsequent steps
-        local screen = game.screen
-        game.input:pump(screen.x + (screen.width / 2), screen.y + (screen.height / 2) - 1.5, screen.z + game.screen_distance)
+        local screen = self.screen
+        self.input:pump(screen.x + (screen.width / 2), screen.y + (screen.height / 2) - 1.5, screen.z + self.screen_distance)
 
         local now = get_timer()
         local delta = (now - frame_start) / 1000
@@ -66,31 +66,31 @@ function Game.run(game)
         accumulator = accumulator + delta
         Time.delta_time = update_rate
         while accumulator > update_rate do
-            game:update_base()
-            if not game.is_active then
+            self:update_base()
+            if not self.is_active then
                 break
             end
-            game.input:advance()
+            self.input:advance()
             accumulator = accumulator - (update_rate)
             updated = true
         end
-        if not game.is_active then
+        if not self.is_active then
             break
         end
 
-        game:draw_base()
-        game:update_buttons()
+        self:draw_base()
+        self:update_buttons()
         
         -- Allows force stopping the game by clearing the history
-        if get_sys_history(game.handle_history) == 0 then
-            game.is_active = false
+        if get_sys_history(self.handle_history) == 0 then
+            self.is_active = false
             break
         end
         
         local t = get_timer() - frame_start
         report_frame_time(t)
-        if t < game.target_time then
-            local wait_time = math.floor(game.target_time - t)
+        if t < self.target_time then
+            local wait_time = math.floor(self.target_time - t)
             wait(wait_time)
             -- Game was probably paused, reset the timer to avoid
             -- accumulated updates
@@ -110,7 +110,7 @@ function Game.run(game)
         end
     end
     
-    game:cleanup()
+    self:cleanup()
 end
 
 function Game:initialize() end
@@ -140,7 +140,6 @@ function Game:initialize_base()
     self.game_objects_to_remove = {}
     self.game_objects_count = 0
     self.game_objects_to_remove_count = 0
-    self.physics_update_accumulator = 0
     self.particles = ParticleManager.new(self, 100)
     self.screen_distance = 0
     self:initialize()
@@ -158,6 +157,7 @@ function Game:initialize_base()
     set_zone_props("GameControl", 0, 2, 0.05, 0.01, 1, 0)
 end
 
+---@private
 function Game:update_base()
     self:update()
     self.particles:update()
@@ -183,6 +183,7 @@ function Game:update_base()
     end
 end
 
+---@private
 function Game:draw_base()
     self.screen:begin()
     self:draw()
@@ -248,7 +249,8 @@ end
 ---@param predicate fun(game_object: game_object): boolean
 ---@return game_object?
 function Game:get_object(predicate)
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         if predicate(object) then
             return object
@@ -260,7 +262,8 @@ end
 ---@param tag string
 ---@return game_object?
 function Game:get_object_with_tag(tag)
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         if object:has_tag(tag) then
             return object
@@ -272,7 +275,8 @@ end
 ---@param tags string[]
 ---@return game_object?
 function Game:get_object_with_all_tags(tags)
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         local has_all = true
         for j, tag in ipairs(tags) do
@@ -291,7 +295,8 @@ end
 ---@param tags string[]
 ---@return game_object?
 function Game:get_object_with_any_tag(tags)
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         for j, tag in ipairs(tags) do
             if object:has_tag(tag) then
@@ -310,7 +315,8 @@ end
 function Game:get_all_objects_area(x, y, w, h)
     local objects = {}
 
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         if object.x >= x and object.x <= x + w and object.y >= y and object.y <= y + h then
             table.insert(objects, object)
@@ -325,7 +331,8 @@ end
 function Game:get_all_objects(predicate)
     local objects = {}
 
-    for i = 1, self.game_objects_count, 1 do
+    local count = self.game_objects_count
+    for i = 1, count, 1 do
         local object = self.game_objects[i]
         if predicate(object) then
             table.insert(objects, object)

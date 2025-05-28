@@ -1,6 +1,9 @@
 --#build
 --#priority 130
 
+---@alias event_listener fun(self: game_object, params: table?)
+---@alias transition fun(self: game_object): string?
+
 ---@enum loop_type
 LoopType = {
     Once = 1,
@@ -14,11 +17,12 @@ LoopType = {
 AnimationController = {}
 AnimationController.__index = AnimationController
 
+---@param default_state string
 ---@return animation_controller
-function AnimationController.new()
+function AnimationController.new(default_state)
     local self = setmetatable({}, AnimationController)--[[@as animation_controller]]
     self.states = {}
-    self.default_state = nil
+    self.default_state = default_state
     return self
 end
 
@@ -44,7 +48,7 @@ end
 ---@class animation_state
 ---@field public animation animation
 ---@field public name string
----@field private transitions (fun(object: game_object): string?)[]
+---@field private transitions transition[]
 AnimationState = {}
 AnimationState.__index = AnimationState
 
@@ -58,14 +62,16 @@ function AnimationState.new(name)
     return self
 end
 
----@param fun fun(object: game_object): string?
-function AnimationState:add_transition(fun)
-    table.insert(self.transitions, fun)
+---@param transition transition
+function AnimationState:add_transition(transition)
+    table.insert(self.transitions, transition)
 end
 
+---@param object game_object
+---@return string?
 function AnimationState:transition(object)
-    for i, fun in ipairs(self.transitions) do
-        local target = fun(object)
+    for _, transition in ipairs(self.transitions) do
+        local target = transition(object)
         if target ~= nil then
             return target
         end
@@ -137,9 +143,9 @@ Animation.__index = Animation
 ---@return animation
 function Animation.new(frames, length, loop)
     local self = setmetatable({}, Animation)--[[@as animation]]
-    self.frames = frames
     self.length = length
     self.loop = loop
+    self.frames = frames
     return self
 end
 
@@ -147,7 +153,7 @@ end
 ---@return animation_frame
 function Animation:get_frame(time)
     local t = -1
-    for key, value in pairs(self.frames) do
+    for key, _ in pairs(self.frames) do
         if key > t and key <= time then
             t = key
         end
@@ -155,6 +161,8 @@ function Animation:get_frame(time)
     return self.frames[t]
 end
 
+---@param min number
+---@param max number
 ---@return (animation_frame[]|animation_frame)?
 function Animation:get_all_frames(min, max)
     local frames = nil
@@ -189,10 +197,11 @@ end
 ---@field public total_time number
 ---@field public finished boolean
 ---@field public length number
----@field private event_listeners { [string]: fun(self: game_object, params: table?)[] }
+---@field private event_listeners { [string]: event_listener[] }
 AnimationInstance = {}
 AnimationInstance.__index = AnimationInstance
 
+---@param owner game_object
 ---@param controller animation_controller
 ---@return animation_instance
 function AnimationInstance.new(owner, controller)
@@ -205,7 +214,7 @@ function AnimationInstance.new(owner, controller)
 end
 
 ---@param event string
----@param listener fun(self: game_object, params: table?)
+---@param listener event_listener
 function AnimationInstance:add_event_listener(event, listener)
     local arr = self.event_listeners[event]
     if arr == nil then

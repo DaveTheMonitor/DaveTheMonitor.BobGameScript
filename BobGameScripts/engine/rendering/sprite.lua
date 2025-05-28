@@ -6,6 +6,8 @@
 ---@field public data integer[]
 ---@field public width integer
 ---@field public height integer
+---@field public __index table
+---@field public new function
 Sprite = {}
 Sprite.__index = Sprite
 
@@ -13,8 +15,9 @@ Sprite.__index = Sprite
 ---@param data integer[]
 ---@param width integer
 ---@param height integer
+---@return sprite
 function Sprite.new(name, data, width, height)
-    local self = setmetatable({}, Sprite)
+    local self = setmetatable({}, Sprite)--[[@as sprite]]
     self.name = name
     self.data = data
     self.width = width
@@ -23,10 +26,10 @@ function Sprite.new(name, data, width, height)
 end
 
 ---@class sprite_data
----@field data integer[]
----@field data_length integer
----@field width integer
----@field height integer
+---@field public data integer[]
+---@field public data_length integer
+---@field public width integer
+---@field public height integer
 SpriteData = {}
 SpriteData.__index = SpriteData
 
@@ -35,7 +38,7 @@ SpriteData.__index = SpriteData
 ---@param data integer[]
 ---@return sprite_data
 function SpriteData.new(width, height, data)
-    local self = setmetatable({}, SpriteData)
+    local self = setmetatable({}, SpriteData)--[[@as sprite_data]]
     self.width = width
     self.height = height
     self.data_length = #data

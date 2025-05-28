@@ -62,12 +62,12 @@ end
 ---@field protected damage_on_impact_tags string[]?
 ---@field protected damage_on_impact_sources { [entity]: boolean }?
 ---@field protected time_since_damaged number
-Entity = GameObject.new()
+Entity = setmetatable({}, GameObject)
 Entity.__index = Entity
 
 ---@return entity
 function Entity.new()
-    local self = setmetatable({}, Entity)--[[@as entity]]
+    local self = setmetatable(GameObject.new(), Entity)--[[@as entity]]
     self.health = 0
     self.max_health = 0
     self.vel_x = 0

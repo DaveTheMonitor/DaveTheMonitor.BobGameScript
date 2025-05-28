@@ -19,7 +19,7 @@ function ParticleManager.new(game, initial_capacity)
     self.particle_count = 0
     self.next_draw_id = 1
     for i = 1, initial_capacity do
-        self.particles[i] = ParticleManager.new_particle(0, self.next_draw_id)
+        self.particles[i] = self:new_particle(0, self.next_draw_id)
         self.next_draw_id = self.next_draw_id + 1
     end
     return self
@@ -28,12 +28,13 @@ end
 ---@param id integer
 ---@param draw_id integer
 ---@return particle_instance
-function ParticleManager.new_particle(id, draw_id)
+function ParticleManager:new_particle(id, draw_id)
     return {
         -- never nil when in use
-        ---@diagnostic disable-next-line assign-type-mismatch
+        ---@diagnostic disable-next-line: assign-type-mismatch
         id = id,
         draw_id = draw_id,
+        ---@diagnostic disable-next-line: assign-type-mismatch
         type = nil,
         x = 0,
         y = 0,
@@ -41,8 +42,11 @@ function ParticleManager.new_particle(id, draw_id)
         vel_y = 0,
         duration = 0,
         age = 0,
-        data = 0
-    }
+        data1 = 0,
+        data2 = 0,
+        data3 = 0,
+        data4 = 0
+    }--[[@as particle_instance]]
 end
 
 ---@param type particle
@@ -55,7 +59,7 @@ function ParticleManager:add(type, x, y, vel_x, vel_y)
     local particle = self.particles[id]
     if particle == nil then
         -- this is the end of the list, so we expand
-        particle = ParticleManager.new_particle(id, self.next_draw_id)
+        particle = self:new_particle(id, self.next_draw_id)
         self.next_draw_id = self.next_draw_id + 1
         self.particles[id] = particle
     end
@@ -141,10 +145,13 @@ function ParticleManager:draw()
     end
 end
 
----@class particle
+---@class (exact) particle
+---@field public __index table
+---@field new function
 Particle = {}
 Particle.__index = Particle
 
+---@return particle
 function Particle.new()
     local self = setmetatable({}, Particle)
     return self
@@ -174,9 +181,9 @@ function Particle:draw(particle, game) end
 ---@field public y number
 ---@field public vel_x number
 ---@field public vel_y number
----@field public data1 number
----@field public data2 number
----@field public data3 number
----@field public data4 number
 ---@field public duration number
 ---@field public age number
+---@field public data1 number|boolean
+---@field public data2 number|boolean
+---@field public data3 number|boolean
+---@field public data4 number|boolean

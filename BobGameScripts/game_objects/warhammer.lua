@@ -2,7 +2,7 @@
 --#priority 404
 
 ---@class warhammer : weapon
-Warhammer = Weapon.new()
+Warhammer = setmetatable({}, Weapon)
 Warhammer.__index = Warhammer
 Warhammer.idle_anim_state = "warhammer_idle"
 Warhammer.run_anim_state = "warhammer_run"
@@ -11,7 +11,7 @@ Warhammer.air_anim_state = "warhammer_air"
 ---@param player player
 ---@return warhammer
 function Warhammer.new(player)
-    local self = setmetatable({}, Warhammer)--[[@as warhammer]]
+    local self = setmetatable(Weapon.new(), Warhammer)--[[@as warhammer]]
     self.player = player
     return self
 end
@@ -500,6 +500,7 @@ function Warhammer:initialize()
     end)
 end
 
+---@package
 ---@param player player
 ---@param ground_anim boolean
 ---@return string? state

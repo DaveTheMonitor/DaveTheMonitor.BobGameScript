@@ -7,8 +7,9 @@
 SpriteManager = {}
 SpriteManager.__index = SpriteManager
 
+---@return sprite_manager
 function SpriteManager.new()
-    local self = setmetatable({}, SpriteManager)
+    local self = setmetatable({}, SpriteManager)--[[@as sprite_manager]]
     self.sprite_data = {}
     self.loaded_sprites = {}
     return self
@@ -40,7 +41,7 @@ function SpriteManager:unload(sprite)
 end
 
 function SpriteManager:unload_all()
-    for key, value in pairs(self.loaded_sprites) do
+    for key, _ in pairs(self.loaded_sprites) do
         self.loaded_sprites[key] = nil
         self.loaded_sprites[key].data = nil
     end

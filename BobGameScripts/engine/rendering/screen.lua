@@ -2,19 +2,19 @@
 --#priority 110
 
 ---@class sprite_to_draw
----@field sprite sprite | integer
----@field dest_x integer
----@field dest_y integer
----@field src_x integer
----@field src_y integer
----@field src_w integer
----@field src_h integer
----@field flip_h boolean
----@field flip_v boolean
----@field layer integer
----@field type integer
----@field draw_index integer
----@field block integer?
+---@field public sprite sprite | integer
+---@field public dest_x integer
+---@field public dest_y integer
+---@field public src_x integer
+---@field public src_y integer
+---@field public src_w integer
+---@field public src_h integer
+---@field public flip_h boolean
+---@field public flip_v boolean
+---@field public layer integer
+---@field public type integer
+---@field public draw_index integer
+---@field public block integer?
 
 ---@class screen
 ---@field private sprite_manager sprite_manager
@@ -37,8 +37,9 @@ Screen.__index = Screen
 ---@param z integer
 ---@param width integer
 ---@param height integer
+---@return screen
 function Screen.new(sprite_manager, x, y, z, width, height)
-    local self = setmetatable({}, Screen)
+    local self = setmetatable({}, Screen)--[[@as screen]]
     self.sprite_manager = sprite_manager
     self.x = x
     self.y = y
@@ -92,7 +93,6 @@ function Screen:begin()
         self.sprites_to_draw[index] = nil
     end
     self.sprites_to_draw_count = 0
-    self.sprite_index = 0
 end
 
 ---@param sprite sprite

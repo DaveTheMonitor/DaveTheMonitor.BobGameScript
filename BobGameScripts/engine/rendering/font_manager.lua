@@ -9,8 +9,9 @@ FontManager = {}
 FontManager.__index = FontManager
 
 ---@param sprite_manager sprite_manager
+---@return font_manager
 function FontManager.new(sprite_manager)
-    local self = setmetatable({}, FontManager)
+    local self = setmetatable({}, FontManager)--[[@as font_manager]]
     self.sprite_manager = sprite_manager
     self.font_data = {}
     self.loaded_fonts = {}
@@ -43,7 +44,7 @@ function FontManager:unload(font)
 end
 
 function FontManager:unload_all()
-    for key, value in pairs(self.loaded_fonts) do
+    for key, _ in pairs(self.loaded_fonts) do
         self.loaded_fonts[key] = nil
     end
 end

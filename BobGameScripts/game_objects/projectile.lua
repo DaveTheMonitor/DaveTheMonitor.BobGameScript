@@ -17,12 +17,12 @@
 ---@field protected damage number
 ---@field protected stagger stagger_info
 ---@field private hits { [entity]: boolean }
-Projectile = GameObject.new()
+Projectile = setmetatable({}, GameObject)
 Projectile.__index = Projectile
 
 ---@return projectile
 function Projectile.new()
-    local self = setmetatable({}, Projectile)--[[@as projectile]]
+    local self = setmetatable(GameObject.new(), Projectile)--[[@as projectile]]
     self.vel_x = 0
     self.vel_y = 0
     self.age = 0

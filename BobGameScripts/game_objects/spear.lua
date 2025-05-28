@@ -2,7 +2,7 @@
 --#priority 403
 
 ---@class spear : weapon
-Spear = Weapon.new()
+Spear = setmetatable({}, Weapon)
 Spear.__index = Spear
 Spear.idle_anim_state = "spear_idle"
 Spear.run_anim_state = "spear_run"
@@ -11,7 +11,7 @@ Spear.air_anim_state = "spear_air"
 ---@param player player
 ---@return spear
 function Spear.new(player)
-    local self = setmetatable({}, Spear)--[[@as spear]]
+    local self = setmetatable(Weapon.new(), Spear)--[[@as spear]]
     self.player = player
     return self
 end
@@ -441,6 +441,7 @@ function Spear:initialize()
     end)
 end
 
+---@package
 ---@param player player
 ---@param ground_anim boolean
 ---@return string? state

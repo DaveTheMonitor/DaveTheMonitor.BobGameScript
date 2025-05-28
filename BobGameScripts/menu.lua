@@ -24,7 +24,7 @@ Menu.__index = Menu
 
 ---@return menu
 function Menu.new()
-    local self = setmetatable({}, Menu)
+    local self = setmetatable({}, Menu)--[[@as menu]]
     return self
 end
 

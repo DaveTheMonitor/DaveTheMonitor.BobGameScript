@@ -2,17 +2,17 @@
 --#priority 450
 
 ---@class blood : particle
-Blood = Particle.new()
+Blood = setmetatable({}, Particle)
 Blood.__index = Blood
 
 ---@return blood
 function Blood.new()
-    local self = setmetatable({}, Blood)--[[@as blood]]
+    local self = setmetatable(Particle.new(), Blood)--[[@as blood]]
     return self
 end
 
 function Blood:initialize(particle, game)
-    particle.data1 = 0
+    particle.data1 = false
     particle.duration = 3 + math.random()
 end
 
@@ -21,7 +21,7 @@ function Blood:update(particle, game)
     local dt = Time.delta_time
 
     local friction
-    if particle.data1 > 0 then
+    if particle.data1 then
         friction = 200
     else
         friction = 20
@@ -40,7 +40,7 @@ function Blood:update(particle, game)
 
     if particle.y < game.level.ground_level then
         particle.y = game.level.ground_level
-        particle.data1 = 1
+        particle.data1 = true
     end
 end
 

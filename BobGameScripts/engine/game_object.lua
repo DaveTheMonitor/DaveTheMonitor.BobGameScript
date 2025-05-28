@@ -9,17 +9,17 @@
 GameObject = {}
 GameObject.__index = GameObject
 
+---@return game_object
 function GameObject.new()
-    local self = setmetatable({}, GameObject)
+    local self = setmetatable({}, GameObject)--[[@as game_object]]
     self.game = nil
     self.x = 0
     self.y = 0
+    self.tags = {}
     return self
 end
 
 function GameObject:update() end
-function GameObject:update_physics() end
-function GameObject:update_post_physics() end
 function GameObject:draw() end
 function GameObject:initialize() end
 function GameObject:unload() end

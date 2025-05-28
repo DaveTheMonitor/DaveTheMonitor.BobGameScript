@@ -4,12 +4,11 @@
 ---@class goblin : enemy
 ---@field health_multiplier number
 ---@field movement_speed_multiplier number
-Goblin = Enemy.new()
+Goblin = setmetatable({}, Enemy)
 Goblin.__index = Goblin
 
 do
-    local anim_controller = AnimationController.new()
-    anim_controller.default_state = "idle"
+    local anim_controller = AnimationController.new("idle")
 
     local anim = anim_controller:add_state("idle")
     anim.animation = Animation.new({

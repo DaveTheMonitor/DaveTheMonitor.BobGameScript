@@ -12,6 +12,7 @@
 Level = {}
 Level.__index = Level
 
+---@return level
 function Level.new()
     local self = setmetatable({}, Level)
     self.gravity = 450

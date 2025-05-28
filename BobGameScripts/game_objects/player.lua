@@ -19,7 +19,7 @@ AttackInput = {
 ---@field private queued_attack input_type?
 ---@field private queued_attack_time number
 ---@field private queued_weapon_index integer?
-Player = Entity.new()
+Player = setmetatable({}, Entity)
 Player.__index = Player
 
 ---@return player
@@ -33,7 +33,7 @@ function Player:initialize()
     self.x = self.game.screen.width / 2
     self.y = self.game.level.ground_level
     self.sprite = sprite_manager:load("player")
-    self.animation_controller = AnimationController.new()
+    self.animation_controller = AnimationController.new("unarmed_idle")
 
     local anim = self.animation_controller:add_state("unarmed_idle")
     anim.animation = Animation.new({
@@ -89,7 +89,6 @@ function Player:initialize()
         return nil
     end)
 
-    self.animation_controller.default_state = "unarmed_idle"
     self.animation = AnimationInstance.new(self, self.animation_controller)
     self:add_event_listeners()
     self.weapons = {
@@ -97,7 +96,7 @@ function Player:initialize()
         Spear.new(self),
         Warhammer.new(self)
     }
-    for i, weapon in ipairs(self.weapons) do
+    for _, weapon in ipairs(self.weapons) do
         weapon:initialize()
     end
     self.weapon_index = 1

@@ -15,13 +15,14 @@
 ---@field private edge_flash number
 ---@field private menu menu
 ---@field private time_until_menu number
-BobGame = Game.new()
+---@field public show_hitboxes boolean
+BobGame = setmetatable({}, Game)
 BobGame.__index = BobGame
 
 ---@return bob_game
 function BobGame.new()
-    local self = setmetatable({}, BobGame)--[[@as bob_game]]
-    self.is_active = true
+    local self = setmetatable(Game.new(), BobGame)--[[@as bob_game]]
+    self.show_hitboxes = false
     return self;
 end
 
@@ -54,6 +55,7 @@ function BobGame:initialize()
     self.history_folder = "bobgame\\"
 end
 
+---@param level level
 function BobGame:initialize_level(level)
     self.level = level
     self.level.game = self
@@ -277,14 +279,18 @@ end
 
 function BobGame:post_draw_object(obj)
     ---@cast obj +entity
-    -- if obj.hitbox ~= nil and obj.hitbox.w > 0 and obj.hitbox.h > 0 then
-    --     local hitbox = obj.hitbox
-    --     self.screen:draw_box_outline(hitbox.x, hitbox.y, hitbox.x + hitbox.w, hitbox.y + hitbox.h, block.colorred, Layers.text)
-    -- end
+    if self.show_hitboxes then
+        if obj.hitbox ~= nil and obj.hitbox.w > 0 and obj.hitbox.h > 0 then
+            local hitbox = obj.hitbox
+            self.screen:draw_box_outline(hitbox.x, hitbox.y, hitbox.x + hitbox.w, hitbox.y + hitbox.h, block.colorred, Layers.ui)
+        end
+    end
 end
 
 function BobGame:add_debug_box(min_x, min_y, max_x, max_y)
-    --table.insert(self.debug_boxes, { min_x, min_y, max_x, max_y, 0 })
+    if self.show_hitboxes then
+        table.insert(self.debug_boxes, { min_x, min_y, max_x, max_y, 0 })
+    end
 end
 
 ---@param area rectangle

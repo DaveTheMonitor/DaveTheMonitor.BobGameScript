@@ -3,9 +3,10 @@
 
 ---@class training_grounds : level
 ---@field private time_until_cloud number
-TrainingGrounds = Level.new()
+TrainingGrounds = setmetatable({}, Level)
 TrainingGrounds.__index = TrainingGrounds
 
+---@return training_grounds
 function TrainingGrounds.new()
     local self = setmetatable(Level.new(), TrainingGrounds)--[[@as training_grounds]]
     return self

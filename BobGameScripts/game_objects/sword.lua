@@ -2,7 +2,7 @@
 --#priority 402
 
 ---@class sword : weapon
-Sword = Weapon.new()
+Sword = setmetatable({}, Weapon)
 Sword.__index = Sword
 Sword.idle_anim_state = "sword_idle"
 Sword.run_anim_state = "sword_run"
@@ -488,6 +488,7 @@ function Sword:initialize()
     end)
 end
 
+---@package
 ---@param player player
 ---@return string? state
 function default_sword_transition(player, ground_anim)

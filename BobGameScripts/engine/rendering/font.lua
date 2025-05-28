@@ -17,8 +17,9 @@ Glyph.__index = Glyph
 ---@param height integer
 ---@param bearing_y integer
 ---@param advance integer
+---@return glyph
 function Glyph.new(x, y, width, height, bearing_y, advance)
-    local self = setmetatable({}, Glyph)
+    local self = setmetatable({}, Glyph)--[[@as glyph]]
     self.x = x
     self.y = y
     self.width = width
@@ -42,8 +43,9 @@ Font.__index = Font
 ---@param mask integer
 ---@param unknown_glyph integer
 ---@param glyph_table table<integer, glyph>
+---@return font
 function Font.new(name, sprite, mask, unknown_glyph, glyph_table)
-    local self = setmetatable({}, Font)
+    local self = setmetatable({}, Font)--[[@as font]]
     self.name = name
     self.sprite = sprite
     self.mask = mask
@@ -112,11 +114,13 @@ function Font:measure(str)
     return w, h
 end
 
----@class font_data
+---@class (exact) font_data
 ---@field public sprite string
 ---@field public mask integer
 ---@field public unknown_glyph integer
 ---@field public glyph_table table<integer, glyph>
+---@field public __index table
+---@field new function
 FontData = {}
 FontData.__index = FontData
 
@@ -124,8 +128,9 @@ FontData.__index = FontData
 ---@param mask integer
 ---@param unknown_glyph integer
 ---@param glyph_table table<integer, glyph>
+---@return font_data
 function FontData.new(sprite, mask, unknown_glyph, glyph_table)
-    local self = setmetatable({}, FontData)
+    local self = setmetatable({}, FontData)--[[@as font_data]]
     self.sprite = sprite
     self.mask = mask
     self.unknown_glyph = unknown_glyph

@@ -38,11 +38,12 @@ end
 
 ---@return rectangle
 function Rectangle:copy()
-    local copy = Rectangle.new(self.x, self.y, self.w, self.h)
-    return copy
+    return Rectangle.new(self.x, self.y, self.w, self.h)
 end
 
-function Rectangle.__eq(self, other)
+---@param other rectangle
+---@return boolean
+function Rectangle:__eq(other)
     if getmetatable(other) ~= Rectangle then
         return false
     end
@@ -50,6 +51,7 @@ function Rectangle.__eq(self, other)
     return self.x == other.x and self.y == other.y and self.w == other.w and self.h == other.h
 end
 
-function Rectangle.__tostring(self)
+---@return string
+function Rectangle:__tostring()
     return "{x: " .. self.x .. ", y: " .. self.y .. ", w: " .. self.w .. ", h: " .. self.h .."}"
 end

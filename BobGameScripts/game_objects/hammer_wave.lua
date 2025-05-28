@@ -5,7 +5,7 @@
 ---@field private sprite sprite
 ---@field private stage integer
 ---@field private pierce integer
-HammerWave = Projectile.new()
+HammerWave = setmetatable({}, Projectile)
 HammerWave.__index = HammerWave
 
 ---@param x number

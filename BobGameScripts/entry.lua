@@ -16,4 +16,4 @@ start_message = start_message .. "It is highly recommended to disable day/night 
 msgbox("Welcome to BobGame!", start_message, "OK", "", "", "", true, false)
 
 instance = BobGame.new()
-Game.run(instance)
+instance:run()

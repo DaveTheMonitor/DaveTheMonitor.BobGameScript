@@ -4,12 +4,12 @@
 ---@class cloud : particle
 ---@field private sprite_1 sprite
 ---@field private sprite_2 sprite
-Cloud = Particle.new()
+Cloud = setmetatable({}, Particle)
 Cloud.__index = Cloud
 
 ---@return cloud
 function Cloud.new()
-    local self = setmetatable({}, Cloud)--[[@as cloud]]
+    local self = setmetatable(Particle.new(), Cloud)--[[@as cloud]]
     return self
 end
 
@@ -68,5 +68,5 @@ function Cloud:draw(particle, game)
         offset_x = -6
         offset_y = -3
     end
-    game.screen:draw(sprite, 0, 0, sprite.width, sprite.height, x + offset_x, y + offset_y, particle.data2)
+    game.screen:draw(sprite, 0, 0, sprite.width, sprite.height, x + offset_x, y + offset_y, particle.data2--[[@as integer]])
 end
