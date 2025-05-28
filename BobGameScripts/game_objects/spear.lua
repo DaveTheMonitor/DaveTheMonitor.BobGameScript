@@ -89,7 +89,8 @@ function Spear:initialize()
         [0.12] = AnimationFrame.new(Rectangle.new(176, 16, 16, 16)),
         [0.16] = AnimationFrame.new(Rectangle.new(192, 16, 16, 16)),
         [0.20] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16)),
-        [0.24] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16), {
+        [0.24] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16)),
+        [0.28] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16), {
             "enable_movement"
         }),
     }, 0.28, LoopType.Hold)
@@ -101,13 +102,15 @@ function Spear:initialize()
             end
         end
 
-        if self.animation.total_time > 0.68 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "spear_ground_end_1"
         end
         
         if self.animation.finished then
             return default_spear_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_ground_2")
@@ -134,7 +137,8 @@ function Spear:initialize()
             EventTrigger.new("apply_force", { x = -50, directional = true })
         }),
         [0.54] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16)),
-        [0.60] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16), {
+        [0.60] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16)),
+        [0.66] = AnimationFrame.new(Rectangle.new(208, 16, 16, 16), {
             "enable_movement"
         }),
     }, 0.66, LoopType.Hold)
@@ -146,13 +150,15 @@ function Spear:initialize()
             end
         end
 
-        if self.animation.total_time > 0.84 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "spear_ground_end_1"
         end
         
         if self.animation.finished then
             return default_spear_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_ground_3")
@@ -167,7 +173,8 @@ function Spear:initialize()
             EventTrigger.new("attack", { damage = 10, box = Rectangle.new(0, 0, 10, 10), stagger = StaggerInfo.new(40, 0, 1) })
         }),
         [0.48] = AnimationFrame.new(Rectangle.new(160, 64, 16, 16)),
-        [0.58] = AnimationFrame.new(Rectangle.new(176, 64, 16, 16), {
+        [0.58] = AnimationFrame.new(Rectangle.new(176, 64, 16, 16)),
+        [0.68] = AnimationFrame.new(Rectangle.new(176, 64, 16, 16), {
             "enable_movement"
         }),
     }, 0.68, LoopType.Hold)
@@ -176,6 +183,8 @@ function Spear:initialize()
         if self.animation.finished then
             return "spear_ground_end_1"
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_ground_stab")
@@ -216,7 +225,7 @@ function Spear:initialize()
             end
         end
         
-        if self.animation.total_time > 1.0 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "spear_ground_end_1"
         end
 
@@ -226,6 +235,7 @@ function Spear:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -251,13 +261,15 @@ function Spear:initialize()
             end
         end
 
-        if self.animation.total_time > 0.6 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "spear_ground_end_1"
         end
         
         if self.animation.finished then
             return default_spear_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_uppercut")
@@ -285,6 +297,8 @@ function Spear:initialize()
         if self.animation.finished then
             return default_spear_transition(self, false)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_air_down_stab")
@@ -302,9 +316,12 @@ function Spear:initialize()
         if self.animation.finished then
             return "spear_air_down_stab_attack"
         end
+
         if self.grounded then
             return "spear_air_down_stab_miss"
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_air_down_stab_attack")
@@ -321,6 +338,8 @@ function Spear:initialize()
         if self.grounded then
             return "spear_air_down_stab_miss"
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_air_down_stab_hit")
@@ -352,9 +371,16 @@ function Spear:initialize()
     }, 1.18, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.time >= 0.82 then
-            return self:transition_to_any_movement_state(true, true, false)
+        
+        if self.animation.finished then
+            return "spear_idle"
         end
+
+        if self.animation.time >= 0.82 then
+            return default_spear_transition(self, true) or self:transition_to_any_movement_state(true, false, false)
+        end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("spear_air_stab_right")
@@ -386,6 +412,7 @@ function Spear:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -418,6 +445,7 @@ function Spear:initialize()
                 return state
             end
         end
+
         return nil
     end)
 

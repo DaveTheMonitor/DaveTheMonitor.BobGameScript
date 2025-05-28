@@ -100,13 +100,15 @@ function Warhammer:initialize()
             end
         end
 
-        if self.animation.total_time > 1.08 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_1"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_ground_2")
@@ -134,7 +136,8 @@ function Warhammer:initialize()
         }),
         [0.56] = AnimationFrame.new(Rectangle.new(48, 176, 16, 16)),
         [0.68] = AnimationFrame.new(Rectangle.new(64, 176, 16, 16)),
-        [0.80] = AnimationFrame.new(Rectangle.new(80, 176, 16, 16), {
+        [0.80] = AnimationFrame.new(Rectangle.new(80, 176, 16, 16)),
+        [0.92] = AnimationFrame.new(Rectangle.new(80, 176, 16, 16), {
             "enable_movement"
         }),
     }, 0.92, LoopType.Hold)
@@ -146,13 +149,15 @@ function Warhammer:initialize()
             end
         end
 
-        if self.animation.total_time > 1.32 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_2"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_ground_3")
@@ -176,13 +181,15 @@ function Warhammer:initialize()
     }, 0.60, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.total_time > 1.00 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_3"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_uppercut")
@@ -215,13 +222,15 @@ function Warhammer:initialize()
     }, 0.80, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.total_time > 1.10 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_uppercut"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_ground_stab")
@@ -245,6 +254,8 @@ function Warhammer:initialize()
         if self.animation.total_time > 2 then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_ground_stab_landing")
@@ -258,10 +269,10 @@ function Warhammer:initialize()
         [0.04] = AnimationFrame.new(Rectangle.new(64, 144, 16, 16)),
         [0.08] = AnimationFrame.new(Rectangle.new(80, 144, 16, 16)),
         [0.12] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16)),
-        [0.40] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16), {
+        [0.50] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16), {
             "enable_movement"
         }),
-    }, 0.40, LoopType.Hold)
+    }, 0.50, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -270,13 +281,15 @@ function Warhammer:initialize()
             end
         end
 
-        if self.animation.total_time > 1.08 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_1"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_air_stab_right")
@@ -319,6 +332,8 @@ function Warhammer:initialize()
                 return state
             end
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_air_stab_left")
@@ -361,6 +376,8 @@ function Warhammer:initialize()
                 return state
             end
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_air_slam")
@@ -377,6 +394,8 @@ function Warhammer:initialize()
         if self.grounded then
             return "warhammer_air_slam_landing"
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_air_slam_landing")
@@ -394,7 +413,7 @@ function Warhammer:initialize()
         [0.40] = AnimationFrame.new(Rectangle.new(96, 144, 16, 16), {
             "enable_movement"
         }),
-    }, 0.20, LoopType.Hold)
+    }, 0.40, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -403,30 +422,15 @@ function Warhammer:initialize()
             end
         end
 
-        if self.animation.total_time > 1.08 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "warhammer_ground_end_1"
         end
         
         if self.animation.finished then
             return default_warhammer_transition(self, true)
         end
-    end)
 
-    anim = anim_controller:add_state("spear_air_down_stab_miss")
-    anim.animation = Animation.new({
-        [0.00] = AnimationFrame.new(Rectangle.new(160, 96, 16, 16)),
-        [0.70] = AnimationFrame.new(Rectangle.new(176, 96, 16, 16)),
-        [0.82] = AnimationFrame.new(Rectangle.new(192, 96, 16, 16), {
-            "enable_movement"
-        }),
-        [0.94] = AnimationFrame.new(Rectangle.new(208, 96, 16, 16)),
-        [1.06] = AnimationFrame.new(Rectangle.new(208, 32, 16, 16)),
-    }, 1.18, LoopType.Hold)
-    anim:add_transition(function (self)
-        ---@cast self player
-        if self.animation.time >= 0.82 then
-            return self:transition_to_any_movement_state(true, true, false)
-        end
+        return nil
     end)
 
     anim = anim_controller:add_state("warhammer_ground_end_1")

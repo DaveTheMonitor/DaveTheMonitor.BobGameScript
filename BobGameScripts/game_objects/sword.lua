@@ -102,13 +102,15 @@ function Sword:initialize()
             end
         end
 
-        if self.animation.total_time > 0.76 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_1"
         end
         
         if self.animation.finished then
             return default_sword_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("sword_ground_2")
@@ -121,10 +123,10 @@ function Sword:initialize()
         [0.04] = AnimationFrame.new(Rectangle.new(16, 48, 16, 16)),
         [0.08] = AnimationFrame.new(Rectangle.new(32, 48, 16, 16)),
         [0.12] = AnimationFrame.new(Rectangle.new(48, 48, 16, 16)),
-        [0.2] = AnimationFrame.new(Rectangle.new(48, 48, 16, 16), {
+        [0.20] = AnimationFrame.new(Rectangle.new(48, 48, 16, 16), {
             "enable_movement"
         }),
-    }, 0.2, LoopType.Hold)
+    }, 0.20, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -133,13 +135,15 @@ function Sword:initialize()
             end
         end
 
-        if self.animation.total_time > 0.6 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_2"
         end
 
         if self.animation.finished then
             return default_sword_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("sword_ground_3")
@@ -160,9 +164,10 @@ function Sword:initialize()
     }, 0.24, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.total_time > 0.64 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_3"
         end
+
         return nil
     end)
 
@@ -193,13 +198,15 @@ function Sword:initialize()
             end
         end
 
-        if self.animation.total_time > 0.76 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_1"
         end
         
         if self.animation.finished then
             return default_sword_transition(self, true)
         end
+
+        return nil
     end)
 
     anim = anim_controller:add_state("sword_ground_uppercut")
@@ -221,13 +228,14 @@ function Sword:initialize()
     }, 0.28, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.total_time > 0.68 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_2"
         end
 
         if self.animation.finished then
             return default_sword_transition(self, true)
         end
+
         return nil
     end)
 
@@ -254,7 +262,7 @@ function Sword:initialize()
             end
         end
 
-        if self.animation.total_time > 0.6 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_4"
         end
 
@@ -265,6 +273,7 @@ function Sword:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -291,7 +300,7 @@ function Sword:initialize()
             end
         end
 
-        if self.animation.total_time > 0.6 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_4"
         end
 
@@ -302,6 +311,7 @@ function Sword:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -335,6 +345,7 @@ function Sword:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -368,6 +379,7 @@ function Sword:initialize()
                 return state
             end
         end
+
         return nil
     end)
 
@@ -396,6 +408,7 @@ function Sword:initialize()
         if self.animation.time > 0.12 and self.grounded then
             return "sword_air_slam_landing"
         end
+        
         return nil
     end)
 
@@ -410,9 +423,10 @@ function Sword:initialize()
     }, 0.04, LoopType.Hold)
     anim:add_transition(function (self)
         ---@cast self player
-        if self.animation.total_time > 0.48 then
+        if self.animation.total_time > self.animation.length + 0.4 then
             return "sword_ground_end_2"
         end
+
         return nil
     end)
 
@@ -424,7 +438,7 @@ function Sword:initialize()
         }),
         [0.10] = AnimationFrame.new(Rectangle.new(16, 32, 16, 16)),
         [0.40] = AnimationFrame.new(Rectangle.new(32, 32, 16, 16)),
-    }, 0.8, LoopType.Once)
+    }, 0.80, LoopType.Once)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -442,7 +456,7 @@ function Sword:initialize()
         }),
         [0.10] = AnimationFrame.new(Rectangle.new(16, 32, 16, 16)),
         [0.40] = AnimationFrame.new(Rectangle.new(32, 32, 16, 16)),
-    }, 0.8, LoopType.Once)
+    }, 0.80, LoopType.Once)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -460,7 +474,7 @@ function Sword:initialize()
         }),
         [0.10] = AnimationFrame.new(Rectangle.new(16, 32, 16, 16)),
         [0.40] = AnimationFrame.new(Rectangle.new(32, 32, 16, 16)),
-    }, 0.8, LoopType.Once)
+    }, 0.80, LoopType.Once)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
@@ -477,7 +491,7 @@ function Sword:initialize()
             EventTrigger.new("set_combo_type", { type = nil })
         }),
         [0.30] = AnimationFrame.new(Rectangle.new(32, 32, 16, 16)),
-    }, 0.7, LoopType.Once)
+    }, 0.70, LoopType.Once)
     anim:add_transition(function (self)
         ---@cast self player
         if self.animation.finished then
