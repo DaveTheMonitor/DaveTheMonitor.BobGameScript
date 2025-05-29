@@ -174,7 +174,6 @@ end
 
 function Goblin:initialize()
     Enemy.initialize(self)
-    self.can_move = false
     self.sprite = sprite_manager:load("goblin")
     self.animation = AnimationInstance.new(self, self.animation_controller)
     self:add_event_listeners()
