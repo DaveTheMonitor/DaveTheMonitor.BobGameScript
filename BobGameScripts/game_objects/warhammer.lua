@@ -516,7 +516,11 @@ function default_warhammer_transition(player, ground_anim)
     if player.grounded then
         if player:consume_queued_attack(AttackInput.up) then
             return "warhammer_uppercut"
-        elseif player:consume_queued_attack(AttackInput.left) or player:consume_queued_attack(AttackInput.right) then
+        elseif player:consume_queued_attack(AttackInput.left) then
+            player.dir = -1
+            return "warhammer_ground_stab"
+        elseif player:consume_queued_attack(AttackInput.right) then
+            player.dir = 1
             return "warhammer_ground_stab"
         elseif player:consume_queued_attack(AttackInput.attack) or player:consume_queued_attack(AttackInput.down) then
             return "warhammer_ground_1"

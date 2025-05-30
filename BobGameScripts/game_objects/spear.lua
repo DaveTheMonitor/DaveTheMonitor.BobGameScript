@@ -481,7 +481,11 @@ function default_spear_transition(player, ground_anim, blacklist)
     if player.grounded then
         if player:consume_queued_attack(AttackInput.attack) or player:consume_queued_attack(AttackInput.down) then
             return "spear_ground_1"
-        elseif player:consume_queued_attack(AttackInput.right) or player:consume_queued_attack(AttackInput.left) then
+        elseif player:consume_queued_attack(AttackInput.left) then
+            player.dir = -1
+            return "spear_ground_stab"
+        elseif player:consume_queued_attack(AttackInput.right) then
+            player.dir = 1
             return "spear_ground_stab"
         elseif player:consume_queued_attack(AttackInput.up) then
             return "spear_uppercut"
